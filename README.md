@@ -1,7 +1,9 @@
 # Talks by The Aha Company
 
-Slides from our talks, grouped by event. Published at https://theahaco.github.io/talks/.
+Slides from our talks, grouped by event. Each talk is published at `https://theahaco.github.io/talks/<path to talk>/`; the site has no index page.
 
-- [HackMeridian 2026](hackmeridian-2026/): Stellar Scaffold and Stellar Registry (reveal.js)
-- [Meridian 2024](meridian-2024/joy/): How Stellar's dApp Tooling Optimizes for Joy ([marp](https://github.com/marp-team/marp-cli))
-- [SCF Pitch Fest 2024](scf-pitch-fest-2024/loam/): Loam
+| Event | Talk | Slides |
+|-------|------|--------|
+| HackMeridian 2026 | Stellar Scaffold + Stellar Registry (reveal.js) | [hackmeridian-2026/](https://theahaco.github.io/talks/hackmeridian-2026/) |
+| Meridian 2024 | How Stellar's dApp Tooling Optimizes for Joy ([marp](https://github.com/marp-team/marp-cli)) | [meridian-2024/joy/](https://theahaco.github.io/talks/meridian-2024/joy/) |
+| SCF Pitch Fest 2024 | Loam (slides on Google Slides) | [scf-pitch-fest-2024/loam/](scf-pitch-fest-2024/loam/) |
