@@ -1,0 +1,128 @@
+/* Shared theme for the Scaffold + Registry hackathon decks.
+   Matches the hackathon quick-reference handout: white page, navy headings,
+   Spectral titles, Space Grotesk body, warm-grey code panels. */
+@font-face { font-family: "Spectral"; font-weight: 400; src: url(assets/fonts/spectral-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Spectral"; font-weight: 600; src: url(assets/fonts/spectral-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Spectral"; font-weight: 600; font-style: italic; src: url(assets/fonts/spectral-latin-600-italic.woff2) format("woff2"); }
+@font-face { font-family: "Spectral"; font-weight: 700; src: url(assets/fonts/spectral-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-weight: 400; src: url(assets/fonts/space-grotesk-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-weight: 500; src: url(assets/fonts/space-grotesk-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-weight: 700; src: url(assets/fonts/space-grotesk-latin-700-normal.woff2) format("woff2"); }
+
+:root {
+  --navy: #1a3b60;
+  --ink: #1f2937;
+  --muted: #5b6573;
+  --faint: #7a8494;
+  --green: #47a019;
+  --lavender: #f6e2ff;
+  --code-bg: #f7f2f2;
+  --code-border: #e7dede;
+  --mono: "Liberation Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+
+body, .reveal-viewport { background: #fff; }
+.reveal {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 38px; color: var(--ink);
+}
+.reveal .slides { text-align: left; }
+.reveal .slides section { padding: 0 20px; }
+
+.reveal h1, .reveal h2, .reveal h3 { color: var(--navy); margin: 0 0 0.5em; line-height: 1.15; }
+.reveal h1 { font-family: "Spectral", Georgia, serif; font-weight: 600; font-size: 2.3em; }
+.reveal h1 em { font-style: italic; }
+.reveal h2 { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.35em; }
+.reveal h2 .num { color: var(--green); margin-right: 0.35em; }
+.reveal p { margin: 0 0 0.6em; line-height: 1.4; }
+.reveal strong { color: var(--navy); }
+.reveal a { color: var(--navy); }
+
+.reveal .muted { color: var(--muted); }
+.reveal .small { font-size: 0.7em; }
+.reveal .eyebrow {
+  font-size: 0.45em; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--faint); margin-bottom: 0.6em;
+}
+
+/* Code: warm-grey panels like the handout */
+.reveal pre {
+  position: relative; width: 100%; margin: 0 0 0.6em; box-shadow: none; font-size: 0.56em;
+  background: var(--code-bg); border-left: 4px solid var(--navy); border-radius: 2px;
+}
+.reveal pre code { max-height: 540px; padding: 0.8em 1em; background: var(--code-bg); color: var(--ink); font-family: var(--mono); line-height: 1.45; }
+.reveal code { font-family: var(--mono); }
+.reveal p code, .reveal li code { color: var(--navy); background: var(--code-bg); padding: 0 0.2em; font-size: 0.85em; }
+.reveal .hljs-comment { color: var(--faint); }
+.reveal .hljs-keyword, .reveal .hljs-built_in, .reveal .hljs-type, .reveal .hljs-attr { color: var(--navy); font-weight: 700; }
+.reveal .hljs-string, .reveal .hljs-number, .reveal .hljs-literal { color: var(--green); }
+.reveal .hljs-title, .reveal .hljs-function .hljs-title { color: #8a3ab9; }
+.reveal .hljs-tag, .reveal .hljs-name { color: var(--navy); }
+.reveal .hljs-variable, .reveal .hljs-template-variable { color: #8a3ab9; }
+.reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0.35; }
+.reveal .hljs-ln-numbers { color: var(--faint); }
+
+/* The handout's three summary cards */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.card { background: var(--lavender); padding: 22px 24px; font-size: 0.62em; line-height: 1.4; }
+.card h3 { font-family: var(--mono); font-size: 1em; font-weight: 700; margin: 0 0 0.6em; }
+.card h3 span { font-family: "Space Grotesk", sans-serif; color: var(--ink); }
+.card .muted { font-size: 0.9em; margin: 0; }
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+.split.wide-left { grid-template-columns: 1.25fr 1fr; }
+.label { font-size: 0.5em; font-weight: 700; color: var(--navy); margin-bottom: 0.3em; }
+
+.reveal ul { display: block; margin-left: 1em; }
+.reveal li { margin: 0.35em 0; }
+
+/* Title slide: navy band like the handout header */
+.reveal .slides section.title-slide { padding: 0; }
+.title-wrap { height: 630px; display: flex; flex-direction: column; }
+.title-band {
+  flex: 1; background: var(--navy); color: #fff; padding: 70px 70px 50px; position: relative;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.title-band .eyebrow { color: #e8eef5; opacity: 0.85; }
+.title-band h1 { color: #fff; font-size: 2.4em; margin-bottom: 0.4em; max-width: 80%; }
+.title-band p { color: #e8eef5; font-size: 0.72em; max-width: 78%; }
+.title-band img { position: absolute; top: 48px; right: 60px; width: 180px; }
+.title-links { padding: 26px 70px; font-size: 0.6em; color: var(--muted); }
+.title-links b { color: var(--navy); margin-right: 0.3em; }
+.title-links span { margin-right: 2em; }
+
+.handoff {
+  font-family: "Spectral", Georgia, serif; font-size: 1.25em; line-height: 1.35; color: var(--navy);
+  border-left: 6px solid var(--green); padding-left: 0.8em; margin-bottom: 1em;
+}
+
+.reveal video { max-width: 100%; max-height: 500px; }
+
+/* Footer on every slide except the title, like the handout's footer */
+.deck-footer {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  display: flex; justify-content: center; align-items: center; gap: 2em;
+  padding: 10px 0 14px; font: 13px "Space Grotesk", sans-serif; color: var(--muted);
+}
+.deck-footer b { color: var(--navy); margin-right: 0.3em; }
+.deck-footer img { height: 22px; vertical-align: middle; margin-left: 0.4em; }
+.title .deck-footer { display: none; }
+.reveal .controls { color: var(--navy); }
+.reveal .progress { color: var(--navy); }
+.reveal .slide-number { background: transparent; color: var(--faint); }
+
+/* Undo reveal white-theme defaults that fight the handout look */
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 { text-transform: none; letter-spacing: normal; text-shadow: none; }
+.reveal pre.tight { font-size: 0.48em; }
+
+/* Registry deck */
+.reveal .tag {
+  display: inline-block; font-size: 0.42em; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.25em 0.7em; margin-left: 0.6em; vertical-align: middle; border-radius: 2px;
+}
+.reveal .tag.now { background: var(--green); color: #fff; }
+.reveal .tag.soon { background: var(--lavender); color: var(--navy); }
+.links-slide { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 0.6em; }
+.links-slide .card { font-size: 0.7em; }
+.links-slide .card h3 { font-family: "Space Grotesk", sans-serif; font-size: 1.15em; color: var(--navy); }
+.reveal .title-band p code { background: rgba(255, 255, 255, 0.14); color: #fff; padding: 0 0.2em; }
