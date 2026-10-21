@@ -1,7 +1,6 @@
 # Talks by The Aha Company
 
-Slides from our talks, grouped by event. Each talk is published at `https://theahaco.github.io/talks/<path to talk>/`; the site has no index page.
-
+Slides from our talks, grouped by event. Talks are viewable at `https://theahaco.github.io/talks/<path to talk>/`
 | Event | Talk | Slides |
 |-------|------|--------|
 | HackMeridian 2026 | Stellar Scaffold + Stellar Registry (reveal.js) | [hackmeridian-2026/scaffold-registry/](https://theahaco.github.io/talks/hackmeridian-2026/scaffold-registry/) |
