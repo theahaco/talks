@@ -408,8 +408,8 @@ stellar registry publish …   # under unverified/
     </div>
   </div>
   <aside class="notes">
-    Answer the last Scaffold slide: your contract works locally, Scaffold doesn't deploy it
-    to testnet by default, the registry does. And once it has a name, other people can find it and
+    Answer the last Scaffold slide: your contract works locally with Scaffold, and getting it onto
+    testnet under a name is the registry's job. And once it has a name, other people can find it and
     you can use theirs the same way. Same headline as the handout. ~45s.
   </aside>
 </section>
@@ -576,7 +576,7 @@ contracts:
   <h2>guess-the-number, local to testnet</h2>
   <div class="split wide-left">
     <ul class="small">
-      <li><strong>01. Context:</strong> it works locally with Scaffold, but by default Scaffold doesn't deploy to testnet.</li>
+      <li><strong>01. Context:</strong> it works locally with Scaffold; putting it on testnet under a name is the registry's job.</li>
       <li><strong>02. Decision:</strong> publish the Wasm and deploy it as <code>unverified/guess-the-number</code>.</li>
       <li><strong>03. Result:</strong> testnet has a named contract, scaffold.yml points at it, and the app gets a typed client.</li>
     </ul>
@@ -602,11 +602,13 @@ let won = game.guess(&5, &player);
   <pre><code class="language-bash" data-trim>
 STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
   </code></pre>
-  <p class="small muted">Defaults to <code>local</code>. The address is baked in: after a redeploy, <code>cargo clean</code> and rebuild.</p>
+  <p class="small muted">Defaults to <code>local</code>, and switching networks rebuilds automatically. Assets like <code>xlm</code> resolve at runtime, so one Wasm works on any network. Contract names resolve at build time: after a redeploy, <code>cargo clean</code> and rebuild.</p>
   <aside class="notes">
     The template contract already uses the registry for XLM (contracts/guess-the-number/src/xlm.rs).
     import_contract! turns a name into a client bound to its address, built from the
-    on-chain Wasm. Set STELLAR_NETWORK=testnet in .env, as on Scaffold's ship slide. Short on time:
+    on-chain Wasm. As of stellar-registry 0.1.2 (cli#97), asset imports derive their address at
+    runtime and a network change re-expands the macros; named contracts still resolve at
+    build time. Set STELLAR_NETWORK=testnet in .env, as on Scaffold's ship slide. Short on time:
     show only the import_contract! line. ~1:15.
   </aside>
 </section>
