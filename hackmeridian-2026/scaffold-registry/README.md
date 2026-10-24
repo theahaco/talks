@@ -2,9 +2,9 @@
 
 reveal.js 5.1.0, vendored in `vendor/` so it works with no internet.
 
-**Run:** open `index.html` for the joint session (intro and about slides, then Scaffold, then Registry), or `intro.html` / `scaffold.html` / `registry.html` alone. Works from disk, or `npx serve .`.
+**Run:** open `index.html` for the joint session (intro, agenda and speakers, then Scaffold, then Registry, then the shared closing), or `intro.html` / `scaffold.html` / `registry.html` / `outro.html` alone. The flow follows the HackMeridian speaker template. Works from disk, or `npx serve .`.
 
-**Edit:** change `intro.html`, `scaffold.html` or `registry.html`, then run `node build-index.mjs` to regenerate `index.html`.
+**Edit:** change `intro.html`, `scaffold.html`, `registry.html` or `outro.html`, then run `node build-index.mjs` to regenerate `index.html`.
 
 **Keys:** → next, ↓ demo recording (under slide 5), `S` speaker notes with timings, `F` fullscreen, `?` help.
 **PDF:** open `scaffold.html?print-pdf` in Chrome and print to PDF.
@@ -16,4 +16,4 @@ reveal.js 5.1.0, vendored in `vendor/` so it works with no internet.
 
 `theme.css` is shared by both decks.
 
-**Registry slides:** slide R4 shows `type: registry` in scaffold.yml as "coming soon" (stellar-scaffold/cli#617). If it ships before the event, drop the "Today" column. R6 can be cut if running long.
+**Registry slides:** slide R4 shows `type: registry` in scaffold.yml as "coming soon" (stellar-scaffold/cli#617). If it ships before the event, drop the "Today" column. A future talk (e.g. Nido) goes in its own file, added to `build-index.mjs` before `outro.html`.
