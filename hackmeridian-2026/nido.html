@@ -88,6 +88,7 @@
       <div class="label">With Nido: one passkey</div>
       <div class="with-shot">
         <img src="assets/nido-passkey.png" alt="Nido's create-with-a-passkey screen" width="400">
+        <div>
         <ul class="small">
           <li>Face ID or a fingerprint</li>
           <li>Nothing to write down</li>
@@ -95,6 +96,8 @@
           <li>Or any key type, e.g. post-quantum</li>
           <li>Recovery: add a trusted friend to get back in</li>
         </ul>
+        <img src="assets/nido-passkey-signin.png" alt="1Password's Sign in with a passkey prompt for Nidohq" width="384">
+        </div>
       </div>
     </div>
   </div>
@@ -104,6 +107,7 @@
       <li>Here's what that changes, starting with getting in.</li>
       <li>The old way, a new user installs a wallet extension, creates a password, writes down twelve words, switches to the right network, and funds the account. Every one of those is a place people drop off.</li>
       <li>With Nido, it's one passkey: Face ID or a fingerprint. Nothing to write down, and on testnet the account arrives with five test XLM, ready to use.</li>
+      <li>Coming back is the same passkey: that's the sign-in prompt, here from 1Password, for the Guess the Number app.</li>
     </ul>
     <p>About 55s.</p>
   </aside>
@@ -146,7 +150,7 @@
 <section>
   <p class="eyebrow">The old way vs with Nido</p>
   <h2>Limits</h2>
-  <div class="split">
+  <div class="split wide-right">
     <div>
       <div class="label">The old way: no limit</div>
       <p>The wallet signs whatever the user confirms. The only protection is reading every popup.</p>
@@ -160,6 +164,7 @@
         <tr><th>Enforced by</th><td>The account, on chain</td></tr>
       </table>
       <p class="small">A call over the cap is refused before anything is sent.</p>
+      <img class="shot" src="assets/nido-spend-cap.png" alt="Guess the Number refusing a guess at the 2 XLM a day cap: it cost nothing" width="1100">
     </div>
   </div>
   <aside class="notes">
@@ -168,6 +173,7 @@
       <li>With a classic wallet there's no spending limit. The wallet signs whatever the user confirms, so the only protection is reading every popup.</li>
       <li>With Nido, the user approves a scoped key for your app, and that key can carry a spending cap: an amount per day, week or month. It also has an expiry, after which it stops working.</li>
       <li>The account itself enforces both, on chain. If your app, or anyone who got hold of its key, tries to spend past the cap, the account refuses the call before anything is sent.</li>
+      <li>That's the screenshot: the game at its 2 XLM a day cap. The guess stopped before the device was asked, and it cost nothing.</li>
     </ul>
     <p>About 50s.</p>
   </aside>
