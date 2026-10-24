@@ -236,11 +236,12 @@ await tx.signAndSend({ signTransaction })
   </aside>
 </section>
 
-<!-- 6 · 3:05–4:05 · the loop, static -->
+<!-- 6 · 3:05–3:35 · walkthrough 1/3: edit -->
 <section>
-  <p class="eyebrow">The loop</p>
-  <h2>Save → redeploy → typed client</h2>
-  <pre><code class="language-rust" data-trim data-line-numbers="1-9">
+  <p class="eyebrow">The loop · 1 of 3</p>
+  <h2>Edit: add a method to the contract</h2>
+  <p class="small">In <code>contracts/guess-the-number/src/lib.rs</code>, next to <code>guess()</code>:</p>
+  <pre><code class="language-rust" data-trim data-line-numbers="1-2|3|4-8">
 /// Is the answer higher or lower than your guess?
 pub fn hint(env: &Env, a_number: u64) -> Symbol {
     let n = Self::number(env);
@@ -251,14 +252,48 @@ pub fn hint(env: &Env, a_number: u64) -> Symbol {
     } else { symbol_short!("yes") }
 }
   </code></pre>
-  <p class="small fragment">Save, and Scaffold rebuilds, redeploys locally and regenerates the client:</p>
-  <pre class="fragment"><code class="language-ts" data-trim>
-const { result } = await guessTheNumber.hint({ a_number: 5n })
-  </code></pre>
+  <p class="small muted"><code>hint()</code> is our example, not part of the template. It reuses the template's own <code>Self::number(env)</code>, the same helper <code>guess()</code> calls.</p>
   <aside class="notes">
-    Walk through it, no live coding: add hint() to contracts/guess-the-number/src/lib.rs
-    and save. The watcher rebuilds and redeploys to the local network and regenerates the
-    client, so guessTheNumber.hint shows up in autocomplete in the React component. ~1 min.
+    No live demo: walk the loop in three slides. Step 1, add a read-only method to the
+    template contract. Nothing else changes: no deploy script, no bindings command. ~30s.
+  </aside>
+</section>
+
+<!-- 6b · 3:35–4:05 · walkthrough 2/3: save -->
+<section>
+  <p class="eyebrow">The loop · 2 of 3</p>
+  <h2>Save: <code>npm run dev</code> does the rest</h2>
+  <pre class="tight"><code class="language-plaintext" data-trim data-line-numbers="1|2-3|4-5|7">
+[stellar] Watching for changes. Press Ctrl+C to stop.
+[stellar] File changed: contracts/guess-the-number/src/lib.rs
+[stellar] Changes detected. Rebuilding...
+[stellar] Building for network "local" (from `stellar network use`)
+[stellar] Starting local network
+          …build, redeploy to the local network…
+[stellar] ✅ Successfully generated client for: guess-the-number
+  </code></pre>
+  <p class="small">One save: the Wasm rebuilds, the contract redeploys locally, and the TypeScript client in <code>app-lib/clients</code> is regenerated with <code>hint</code> in it.</p>
+  <aside class="notes">
+    This is the watcher output from npm run dev, trimmed. The first run also pulls the
+    Stellar quickstart Docker image; after that it's just rebuild, redeploy, regenerate. ~30s.
+  </aside>
+</section>
+
+<!-- 6c · 4:05–4:35 · walkthrough 3/3: use it -->
+<section>
+  <p class="eyebrow">The loop · 3 of 3</p>
+  <h2>Use it: typed, in your frontend</h2>
+  <p class="small">In <code>GuessTheNumber.tsx</code>, <code>guessTheNumber.</code> now autocompletes <code>hint</code>:</p>
+  <pre><code class="language-ts" data-trim data-line-numbers="1|2-4">
+import { guessTheNumber } from "@stellar-scaffold/app-lib/clients"
+
+const tx = await guessTheNumber.hint({ a_number: BigInt(guess) })
+setHint(tx.result)   // "higher" | "lower" | "yes"
+  </code></pre>
+  <p class="small muted">A read-only call: no wallet signature needed. Same import in the Svelte template.</p>
+  <aside class="notes">
+    The payoff: the method you wrote in Rust a moment ago is a typed function in the app,
+    argument names and all. No address, no copied bindings. ~30s.
   </aside>
 </section>
 
