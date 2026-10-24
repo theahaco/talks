@@ -33,7 +33,7 @@
   </aside>
 </section>
 
-<!-- N2 · 0:30–1:25 -->
+<!-- N2 · 0:30–1:20 -->
 <section>
   <p class="eyebrow">New to Stellar?</p>
   <h2>Stellar has two kinds of account</h2>
@@ -56,17 +56,17 @@
   <aside class="notes">
     <ul>
       <li>If you're new to Stellar, one thing first: Stellar has two kinds of account.</li>
-      <li>A G-address is an account with keys. Often that's one key, but it can have up to twenty, each with a weight, and thresholds that say how much weight an action needs. That's multisig, built into the account. If you've used Ethereum, think of an externally owned account with multisig built in.</li>
-      <li>What it can limit is how many signatures an action needs. It can't say "this app may spend two XLM a day." The usual wallet is an extension and a seed phrase.</li>
-      <li>A C-address is a contract. Its own code decides what it allows: which passkeys or G-addresses can sign, which apps can act for it, which contracts they can call, how much they can spend, and until when. On Ethereum you'd call that a smart contract wallet, except on Stellar it's built into the network.</li>
+      <li>A G-address is an account with keys: one, or up to twenty with weights and thresholds. If you've used Ethereum, think of an externally owned account with multisig built in.</li>
+      <li>It can limit how many signatures an action needs, but not "this app may spend two XLM a day." The usual wallet is an extension and a seed phrase.</li>
+      <li>A C-address is a contract. Its code decides who can sign, which apps can act for it, which contracts they can call, how much they can spend, and until when. On Ethereum you'd call that a smart contract wallet.</li>
       <li>Nido gives each of your users a C-address, behind one passkey.</li>
     </ul>
-    <p>About 55s.</p>
+    <p>About 50s.</p>
     <p><em>Sources: developers.stellar.org/docs/learn/fundamentals/transactions/signatures-multisig, developers.stellar.org/docs/build/guides/contract-accounts</em></p>
   </aside>
 </section>
 
-<!-- N3 · 1:25–2:20 -->
+<!-- N3 · 1:20–2:05 -->
 <section>
   <p class="eyebrow">The old way vs with Nido</p>
   <h2>Getting in</h2>
@@ -102,42 +102,39 @@
   <aside class="notes">
     <ul>
       <li>Here's what that changes, starting with getting in.</li>
-      <li>The old way, a new user installs a wallet extension, creates a password, writes down twelve words, switches to the right network, and funds the account. Every one of those is a place people drop off.</li>
-      <li>With Nido, it's one passkey: Face ID or a fingerprint. Nothing to write down, and on testnet the account arrives with five test XLM, ready to use.</li>
+      <li>The old way, a new user installs an extension, creates a password, writes down twelve words, switches network, and funds the account. Every step is a place people drop off.</li>
+      <li>With Nido, it's one passkey: Face ID or a fingerprint. Nothing to write down, and on testnet the account arrives with five test XLM.</li>
     </ul>
-    <p>About 55s.</p>
+    <p>About 45s.</p>
   </aside>
 </section>
 
-<!-- N3a · recovery -->
+<!-- N3a · 2:05–2:30 -->
 <section>
   <p class="eyebrow">Never locked out</p>
   <h2>Recovery</h2>
   <div class="with-shot">
     <img src="assets/nido-recovery.png" alt="Nido's recovery setup: what to protect against, who can help you back in, how many must approve, and timing" width="440">
     <div>
-      <p>Recovery starts off: lose the passkey, and nobody can help you back in. Turn it on and choose:</p>
+      <p>Off by default. Turn it on and choose:</p>
       <table class="compare">
         <tr><th>Protect against</th><td>A lost passkey, or a stolen one</td></tr>
-        <tr><th>Who helps</th><td>Trusted friends approve, your recovery kit proves it is you, or both together</td></tr>
-        <tr><th>How many</th><td>How many friends must approve</td></tr>
+        <tr><th>Who helps</th><td>Trusted friends, your recovery kit, or both</td></tr>
+        <tr><th>How many</th><td>Friends who must approve</td></tr>
         <tr><th>Timing</th><td>Standard: wait 7 days, then 14 days to finish</td></tr>
       </table>
-      <p class="small muted">Friends are other Nidos or Stellar addresses. One option restores this exact setup if the passkey is stolen.</p>
     </div>
   </div>
   <aside class="notes">
     <ul>
-      <li>And if the user loses that passkey? Recovery starts off: if you lose this passkey, nobody can help you back in.</li>
-      <li>Turning it on, you choose what it protects against, a lost passkey or a stolen one, and who can help you back in: trusted friends, your recovery kit, or both together.</li>
-      <li>Friends are other Nidos or Stellar addresses, and you set how many must approve.</li>
-      <li>And there's a delay: by default, wait seven days, then fourteen days to finish.</li>
+      <li>And if the user loses that passkey? Recovery is off until they turn it on.</li>
+      <li>They choose: a lost or a stolen passkey; trusted friends, a recovery kit, or both; how many friends must approve. Then a wait: seven days, then fourteen to finish.</li>
     </ul>
-    <p>About 40s.</p>
+    <p>About 25s.</p>
   </aside>
 </section>
 
-<!-- N4 · 2:20–3:10 -->
+<!-- N4 · 2:30–3:15 -->
 <section>
   <p class="eyebrow">The old way vs with Nido</p>
   <h2>Every action</h2>
@@ -166,11 +163,11 @@
       <li>With a classic wallet, every call your app makes is a popup the user has to read and confirm. In Guess the Number, that's one popup per guess.</li>
       <li>With Nido, the user approves your app once. That's two passkey taps for this sample. After that, every guess just goes through. Zero prompts.</li>
     </ul>
-    <p>About 50s.</p>
+    <p>About 45s.</p>
   </aside>
 </section>
 
-<!-- N5 · 3:10–4:00 -->
+<!-- N5 · 3:15–4:00 -->
 <section>
   <p class="eyebrow">The old way vs with Nido</p>
   <h2>Limits</h2>
@@ -193,13 +190,12 @@
   </div>
   <aside class="notes">
     <ul>
-      <li>And limits.</li>
-      <li>With a classic wallet there's no spending limit. The wallet signs whatever the user confirms, so the only protection is reading every popup.</li>
-      <li>With Nido, the user approves a scoped key for your app, and that key can carry a spending cap: an amount per day, week or month. It also has an expiry, after which it stops working.</li>
-      <li>The account itself enforces both, on chain. If your app, or anyone who got hold of its key, tries to spend past the cap, the account refuses the call before anything is sent.</li>
+      <li>And limits. A classic wallet signs whatever the user confirms, so the only protection is reading every popup.</li>
+      <li>With Nido, the scoped key for your app carries a spending cap, an amount per day, week or month, and an expiry.</li>
+      <li>The account enforces both, on chain. If your app, or anyone with its key, tries to spend past the cap, the call is refused before anything is sent.</li>
       <li>That's the screenshot: the game at its 2 XLM a day cap. The guess stopped before the device was asked, and it cost nothing.</li>
     </ul>
-    <p>About 50s.</p>
+    <p>About 45s.</p>
   </aside>
 </section>
 
@@ -237,7 +233,7 @@
   </aside>
 </section>
 
-<!-- N7 · 5:00–5:45 -->
+<!-- N7 · 5:00–5:30 -->
 <section>
   <p class="eyebrow">Part 2</p>
   <h2>How to Nido</h2>
@@ -251,16 +247,15 @@ npm run clients:testnet && npm run dev
   <p class="label">1 · Imports &nbsp;&nbsp; 2 · Ask for access &nbsp;&nbsp; 3 · Call for the user</p>
   <aside class="notes">
     <ul>
-      <li>You start from the Nido template, a community template for Scaffold Stellar. One command: stellar scaffold init, with the template nidohq slash scaffold-template.</li>
-      <li>Then install, run doctor to check your setup, build the clients and start the dev server.</li>
-      <li>It's the same Scaffold React app you'd get from the default template, with the same Guess the Number sample. I'll show you three diffs against the default template.</li>
+      <li>Start from the Nido template, a community template for Scaffold Stellar: stellar scaffold init, with nidohq slash scaffold-template.</li>
+      <li>Install, run doctor, build the clients, start the dev server. Same Scaffold React app, same Guess the Number sample. Three diffs against the default template.</li>
     </ul>
-    <p>About 45s.</p>
+    <p>About 30s.</p>
     <p><em>Sources: github.com/nidohq/scaffold-template (NIDO.md, README.md), github.com/nidohq/scaffold-template/pull/10 (UX walkthrough), stellarscaffold.org/docs/community-templates</em></p>
   </aside>
 </section>
 
-<!-- N8 · 5:45–6:45 -->
+<!-- N8 · 5:30–6:05 -->
 <section>
   <p class="eyebrow">Diff 1 of 3 · vs the React template</p>
   <h2>Imports</h2>
@@ -289,15 +284,14 @@ npm run clients:testnet && npm run dev
   <p class="small muted">Nido’s wallet module is already in <code>app-lib/wallet.ts</code>. You don’t touch it.</p>
   <aside class="notes">
     <ul>
-      <li>Diff one: the imports.</li>
-      <li>In the Guess the Number component, you import a few things from the app library: submitCall, which sends a call for any wallet; Grant and SessionGate, which describe what your app asks the user for; xlmTokenId, so you can put a cap on XLM; and describe and isOverCap, which turn refusals into sentences you can show.</li>
-      <li>Nido's wallet module is already wired into the wallet picker in app-lib. You don't touch it.</li>
+      <li>Diff one: the imports. submitCall sends a call for any wallet; Grant and SessionGate describe what your app asks for; xlmTokenId lets you cap XLM; describe and isOverCap turn refusals into sentences.</li>
+      <li>Nido's wallet module is already wired into app-lib. You don't touch it.</li>
     </ul>
-    <p>About 1 min.</p>
+    <p>About 35s.</p>
   </aside>
 </section>
 
-<!-- N9 · 6:45–8:05 -->
+<!-- N9 · 6:05–7:00 -->
 <section>
   <p class="eyebrow">Diff 2 of 3 · vs the React template</p>
   <h2>Connect, then ask for access</h2>
@@ -329,16 +323,15 @@ npm run clients:testnet && npm run dev
   </div>
   <aside class="notes">
     <ul>
-      <li>Diff two: connecting, then asking for access.</li>
-      <li>Connecting doesn't change. It's the same connectWallet call, and Nido shows up first in the wallet picker.</li>
-      <li>What's new is asking for access. You list grants, one for each contract the call touches. A guess calls the game, and the game moves XLM, so there are two: the game's guess function, and XLM transfer, capped at two XLM a day. Both last twenty-four hours.</li>
-      <li>Then you wrap the form in a SessionGate with those grants. The user approves them once, in Nido, and the gate opens.</li>
+      <li>Diff two. Connecting doesn't change: same connectWallet, and Nido is first in the picker.</li>
+      <li>What's new is grants, one per contract the call touches. A guess calls the game, and the game moves XLM, so two: the game's guess, and XLM transfer capped at two XLM a day. Both last twenty-four hours.</li>
+      <li>Wrap the form in a SessionGate with those grants. The user approves them once, in Nido, and the gate opens.</li>
     </ul>
-    <p>About 1:20.</p>
+    <p>About 55s.</p>
   </aside>
 </section>
 
-<!-- N10 · 8:05–8:50 -->
+<!-- N10 · 7:00–7:35 -->
 <section>
   <p class="eyebrow">Diff 2 of 3 · what the user sees</p>
   <h2>The grants, in Nido</h2>
@@ -360,18 +353,16 @@ npm run clients:testnet && npm run dev
   </div>
   <aside class="notes">
     <ul>
-      <li>Here's what those grants look like to the user. This is Nido's approval page, opened when the SessionGate asks.</li>
-      <li>Each grant from the code becomes a rule. The first grant, the game's guess function, is rule one: only guess, on the game contract. The second, XLM transfer, is rule two. Nido narrows it further: it can only pay the game contract, the one guess calls.</li>
-      <li>The two XLM a day from the code shows up as the cap, and the user can change it before approving. Twenty-four hours becomes the expiry, shown as a ledger number.</li>
-      <li>And the app's key at the bottom is the session key: a key the app holds itself, which is what will sign every guess on the next slide.</li>
-      <li>The user confirms with their passkey, and the gate opens.</li>
+      <li>This is Nido's approval page. Each grant becomes a rule: rule one, only guess on the game; rule two, only XLM transfer, and Nido narrows it to paying the game.</li>
+      <li>Two XLM a day is the cap, which the user can change. Twenty-four hours becomes an expiry ledger. The app's key at the bottom is the session key that signs every guess.</li>
+      <li>One passkey confirmation, and the gate opens.</li>
     </ul>
-    <p>About 45s.</p>
+    <p>About 35s.</p>
     <p><em>Sources: github.com/nidohq/scaffold-template/pull/10 (UX walkthrough)</em></p>
   </aside>
 </section>
 
-<!-- N11 · 8:50–10:05 -->
+<!-- N11 · 7:35–8:25 -->
 <section>
   <p class="eyebrow">Diff 3 of 3 · vs the React template</p>
   <h2>Call for the user</h2>
@@ -401,18 +392,16 @@ npm run clients:testnet && npm run dev
   </div>
   <aside class="notes">
     <ul>
-      <li>Diff three: calling for the user.</li>
-      <li>Before, you build the transaction with the user's address as the source, then sign and send it with the wallet. That's the popup.</li>
-      <li>After, it's one call: submitCall, with the user's address and a function that builds the same guess.</li>
-      <li>And here's the part I like: there's no new round-trip through Nido. The app's session key signs each call itself, and the account checks it against the grants the user approved. Nido isn't in the loop.</li>
-      <li>If the user connected a classic G-address wallet instead, submitCall still signs with it the old way.</li>
-      <li>The passkey still matters: that's the sign-in prompt, here from 1Password, for the Guess the Number app.</li>
+      <li>Diff three. Before, you build the transaction with the user's address, then sign and send it with the wallet. That's the popup.</li>
+      <li>After, it's one submitCall, with the address and a function that builds the same guess.</li>
+      <li>No new round-trip through Nido: the app's session key signs each call, and the account checks it against the grants. A classic G-address wallet still signs the old way.</li>
+      <li>The passkey still matters for sign-in: that's the 1Password prompt for the Guess the Number app.</li>
     </ul>
-    <p>About 1:15.</p>
+    <p>About 50s.</p>
   </aside>
 </section>
 
-<!-- N12 · the account's policies, human-readable -->
+<!-- N12 · 8:25–9:00 -->
 <section>
   <p class="eyebrow">After approval · what your account enforces</p>
   <h2>Your policies, in plain words</h2>
@@ -428,105 +417,53 @@ npm run clients:testnet && npm run dev
   </div>
   <aside class="notes">
     <ul>
-      <li>Once the user approves, the grants are rules on their account, and Nido shows them.</li>
-      <li>Home: Recent activity has "Updated policies, 2 rules added", next to the two 1 XLM payments to the game.</li>
-      <li>The Account policy page lists every rule that decides who may do what on the account: 3 rules installed, and the policy document is verified against the hash the account stores on chain.</li>
-      <li>It names the two signers: "admin", the user's passkey, and "session", the app's key. Only admin has full authority.</li>
+      <li>Once approved, the grants are rules on the account. Home shows "Updated policies, 2 rules added" in Recent activity.</li>
+      <li>The Account policy page: 3 rules installed, the document verified against the hash on chain, and two signers: "admin", the user's passkey, with full authority, and "session", the app's key.</li>
     </ul>
-    <p>About 45s.</p>
+    <p>About 35s.</p>
   </aside>
 </section>
 
-<!-- N13 · one rule, human-readable and raw -->
+<!-- N13 · 9:00–10:00 -->
 <section>
-  <p class="eyebrow">Same rule, two views</p>
-  <h2>guess-xlm, read and raw</h2>
+  <p class="eyebrow">Same policy, two views</p>
+  <h2>The policy, read and raw</h2>
   <div class="with-shot">
     <img src="assets/nido-policy-rules.png" alt="Nido's rule cards for guess and guess-xlm: session can call transfer on the XLM contract, up to 2 XLM per day" width="600">
     <div>
-      <div class="label">The rule in the Perch policy document</div>
-      <pre class="tight"><code class="language-json" data-trim data-line-numbers="1-10|2-3|4|7|9">
-{
-  "args": [{ "index": 1, "pred": {
-    "address": "CBY4S4…ECYGUW", "type": "address-eq" } }],
-  "cap": { "limit": "20000000", "period-ledgers": 17280 },
-  "functions": ["transfer"],
-  "name": "guess-xlm",
-  "not-after-ledger": 5382692,
-  "principals": { "signers": ["session"], "type": "all" },
-  "scope": { "address": "CDLZFC…HGCYSC", "type": "contract" }
-}
+      <div class="label">The raw Perch policy document</div>
+      <pre class="tight"><code class="language-json" data-trim data-line-numbers="1-15|3-4,14|5-6|7|10">
+{ "network": "Test SDF Network ; September 2015",
+  "rules": [
+    { "name": "admin", …, "scope": { "type": "self-admin" } },
+    { "functions": ["guess"], "name": "guess", … },
+    { "args": [{ "index": 1, "pred": {
+        "address": "CBY4S4…ECYGUW", "type": "address-eq" } }],
+      "cap": { "limit": "20000000", "period-ledgers": 17280 },
+      "functions": ["transfer"],
+      "name": "guess-xlm",
+      "not-after-ledger": 5382692,
+      "principals": { "signers": ["session"], "type": "all" },
+      "scope": { "address": "CDLZFC…HGCYSC", "type": "contract" } }
+  ],
+  "signers": [{ "id": "admin", … }, { "id": "session", … }],
+  "version": 1 }
       </code></pre>
-      <table class="compare">
-        <tr><td><code>"limit": "20000000"</code></td><td>2 XLM: amounts are in stroops, 10,000,000 to the XLM</td></tr>
-        <tr><td><code>"period-ledgers": 17280</code></td><td>Per day: about 5 seconds a ledger</td></tr>
-        <tr><td><code>"not-after-ledger"</code></td><td>Stops at ledger 5382692</td></tr>
-        <tr><td><code>"args"</code>, <code>"address-eq"</code></td><td>Argument conditions: pays only the game</td></tr>
-      </table>
+      <p class="small">Amounts are in stroops, 10,000,000 to the XLM. The account stores this document’s hash on chain.</p>
     </div>
   </div>
   <aside class="notes">
     <ul>
-      <li>Here's one rule both ways. On the left, Nido's card for guess-xlm: "session" can call transfer on the XLM contract, up to 2 XLM per day, until ledger 5382692.</li>
-      <li>On the right, the same rule in the raw Perch policy document. Click through:</li>
-      <li>args: the first argument after the sender must be the game's address, which is the "Argument conditions" tag. It can only pay the game.</li>
-      <li>cap: limit 20000000 is in stroops, ten million to an XLM, so 2 XLM. period-ledgers 17280 at about five seconds a ledger is one day.</li>
-      <li>not-after-ledger is the expiry, the "Stops at ledger" tag. scope is the XLM contract itself.</li>
+      <li>The same policy both ways. On the left, Nido's card for guess-xlm: "session" can call transfer on the XLM contract, up to 2 XLM per day, until ledger 5382692.</li>
+      <li>On the right, the raw Perch policy document, Perch being the policy language Nido accounts enforce. Click through: three rules, admin, guess and guess-xlm, and two signers, admin and session.</li>
+      <li>guess-xlm in full. args: it can only pay the game. cap: 20000000 stroops is 2 XLM, and 17280 ledgers at about five seconds each is a day. not-after-ledger is the expiry.</li>
+      <li>The account stores the document's hash on chain, so what you read here is exactly what it enforces.</li>
     </ul>
     <p>About 1 min.</p>
   </aside>
 </section>
 
-<!-- N14 · the whole raw policy document -->
-<section>
-  <p class="eyebrow">Raw document JSON</p>
-  <h2>The raw Perch policy document</h2>
-  <div class="split wide-left">
-    <pre class="tight"><code class="language-json" data-trim>
-{
-  "network": "Test SDF Network ; September 2015",
-  "rules": [
-    { "name": "admin",
-      "principals": { "signers": ["admin"], "type": "all" },
-      "scope": { "type": "self-admin" } },
-    { "functions": ["guess"], "name": "guess",
-      "not-after-ledger": 5382692,
-      "principals": { "signers": ["session"], "type": "all" },
-      "scope": { "address": "CBY4S4…ECYGUW",
-                 "type": "contract" } },
-    { "args": [ … ], "cap": { … },
-      "functions": ["transfer"], "name": "guess-xlm", … }
-  ],
-    </code></pre>
-    <div>
-      <pre class="tight"><code class="language-json" data-trim>
-  "signers": [
-    { "id": "admin",
-      "key": "047f6eb2…d1acb22e",
-      "verifier": "CDEV5Y…K4EJT" },
-    { "id": "session",
-      "key": "04caa6ec…aa25495d",
-      "verifier": "CDEV5Y…K4EJT" }
-  ],
-  "version": 1
-}
-      </code></pre>
-      <p class="small">This is the document itself, names and all. The account stores its hash on chain, and Nido checks the document byte for byte against it.</p>
-    </div>
-  </div>
-  <p class="small muted">guess-xlm in full is on the previous slide. Long keys and addresses are shortened with an ellipsis.</p>
-  <aside class="notes">
-    <ul>
-      <li>And this is the whole document, what Nido's "Raw document JSON" shows: Perch, the policy language Nido accounts enforce.</li>
-      <li>Three rules: admin, with full authority over the account itself; guess; and guess-xlm, from the last slide.</li>
-      <li>Two signers, admin and session, each a P-256 key checked by the same verifier contract.</li>
-      <li>The account stores the document's hash on chain, so what you read here is exactly what it enforces.</li>
-    </ul>
-    <p>About 45s.</p>
-  </aside>
-</section>
-
-<!-- N15 · 10:05–15:00 -->
+<!-- N15 · 10:00–15:00 -->
 <section>
   <p class="eyebrow">Part 3 · 5 min</p>
   <h2>Questions?</h2>
