@@ -35,6 +35,14 @@
   </aside>
 </section>
 
+<!-- SB · the big idea -->
+<section>
+  <p class="eyebrow">The big idea</p>
+  <p class="handoff">Every save rebuilds, redeploys and regenerates your typed client.<br>
+  Spend the weekend on your app, not the plumbing.</p>
+  <aside class="notes">One sentence to hold onto for the next seven minutes. ~10s.</aside>
+</section>
+
 <!-- 2 · 0:30–1:00 -->
 <section>
   <h2>The hackathon problem</h2>
@@ -145,12 +153,11 @@ await tx.signAndSend({ signTransaction })
   </aside>
 </section>
 
-<!-- 6 · 3:05–5:05 · LIVE DEMO -->
+<!-- 6 · 3:05–4:05 · the loop, static -->
 <section>
-  <section>
-    <p class="eyebrow">Live demo</p>
-    <h2>Save → redeploy → typed client</h2>
-    <pre><code class="language-rust" data-trim data-line-numbers="1-9">
+  <p class="eyebrow">The loop</p>
+  <h2>Save → redeploy → typed client</h2>
+  <pre><code class="language-rust" data-trim data-line-numbers="1-9">
 /// Is the answer higher or lower than your guess?
 pub fn hint(env: &Env, a_number: u64) -> Symbol {
     let n = Self::number(env);
@@ -160,22 +167,16 @@ pub fn hint(env: &Env, a_number: u64) -> Symbol {
         symbol_short!("lower")
     } else { symbol_short!("yes") }
 }
-    </code></pre>
-    <pre class="fragment"><code class="language-ts" data-trim>
+  </code></pre>
+  <p class="small fragment">Save, and Scaffold rebuilds, redeploys locally and regenerates the client:</p>
+  <pre class="fragment"><code class="language-ts" data-trim>
 const { result } = await guessTheNumber.hint({ a_number: 5n })
-    </code></pre>
-    <aside class="notes">
-      Pre-built app is already running (npm run dev). Paste hint() into
-      contracts/guess-the-number/src/lib.rs, save. Point at watcher output: build,
-      redeploy, client regenerated. In GuessTheNumber.tsx type "guessTheNumber." and
-      show hint in autocomplete. If anything stalls >15s, press ↓ for the recording. ~2 min.
-    </aside>
-  </section>
-  <section>
-    <p class="eyebrow">Demo recording</p>
-    <video src="media/demo.mp4" controls preload="auto" data-autoplay></video>
-    <p class="small muted">Fallback: drop the recording at <code>media/demo.mp4</code>.</p>
-  </section>
+  </code></pre>
+  <aside class="notes">
+    Walk through it, no live coding: add hint() to contracts/guess-the-number/src/lib.rs
+    and save. The watcher rebuilds and redeploys to the local network and regenerates the
+    client, so guessTheNumber.hint shows up in autocomplete in the React component. ~1 min.
+  </aside>
 </section>
 
 <!-- 7 · 5:05–5:45 -->
@@ -229,6 +230,27 @@ npm run build                 # → dist/
     talk), then point scaffold.yml's testnet entry at the deployed ID. build --network
     testnet fetches it and regenerates the clients. ~40s.
   </aside>
+</section>
+
+<!-- SK · key takeaways -->
+<section>
+  <p class="eyebrow">Three things to remember</p>
+  <h2>Key takeaways</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Start fast</h3>
+      <p><code>init</code> and <code>npm run dev</code> give you contracts, a frontend and a local network.</p>
+    </div>
+    <div class="card">
+      <h3>Save is the loop</h3>
+      <p>Every save rebuilds, redeploys locally and regenerates typed clients.</p>
+    </div>
+    <div class="card">
+      <h3>Ship via Registry</h3>
+      <p>Testnet contracts go through the registry; scaffold.yml just points at them.</p>
+    </div>
+  </div>
+  <aside class="notes">~30s.</aside>
 </section>
 
 <!-- 9 · 6:25–6:50 -->
