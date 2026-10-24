@@ -9,6 +9,6 @@ reveal.js 5.1.0, vendored in `vendor/` so it works with no internet.
 **Keys:** → next, `S` speaker notes with timings, `F` fullscreen, `?` help.
 **PDF:** open `scaffold.html?print-pdf` in Chrome and print to PDF.
 
-`theme.css` is shared by both decks.
+**Style:** follows the Aha master deck in [theahaco/brand](https://github.com/theahaco/brand/tree/main/templates): 1920×1080, Space Grotesk titles, Spectral body, brand colors. `theme.css` and `deck.js` (footer and reveal setup) are shared by every deck file. Slides use `class="navy"` with `data-background-color="#1a3b60"` for the cover, dividers and closing, and `data-background-color="#f6e2ff"` for big-idea and takeaway slides.
 
 **Registry slides:** slide R4 shows `type: registry` in scaffold.yml as "coming soon" (stellar-scaffold/cli#617). If it ships before the event, drop the "Today" column. A future talk (e.g. Nido) goes in its own file, added to `build-index.mjs` before `outro.html`.

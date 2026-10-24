@@ -1,6 +1,6 @@
-/* Shared theme for the Scaffold + Registry hackathon decks.
-   Matches the hackathon quick-reference handout: white page, navy headings,
-   Spectral titles, Space Grotesk body, warm-grey code panels. */
+/* Shared theme for the HackMeridian 2026 decks, following the Aha master deck
+   (theahaco/brand templates): 1920×1080 canvas, Space Grotesk for titles and
+   labels, Spectral for body text, brand colors and neutrals only. */
 @font-face { font-family: "Spectral"; font-weight: 400; src: url(assets/fonts/spectral-latin-400-normal.woff2) format("woff2"); }
 @font-face { font-family: "Spectral"; font-weight: 600; src: url(assets/fonts/spectral-latin-600-normal.woff2) format("woff2"); }
 @font-face { font-family: "Spectral"; font-weight: 600; font-style: italic; src: url(assets/fonts/spectral-latin-600-italic.woff2) format("woff2"); }
@@ -10,122 +10,155 @@
 @font-face { font-family: "Space Grotesk"; font-weight: 700; src: url(assets/fonts/space-grotesk-latin-700-normal.woff2) format("woff2"); }
 
 :root {
+  /* Brand colors */
   --navy: #1a3b60;
-  --ink: #1f2937;
-  --muted: #5b6573;
-  --faint: #7a8494;
   --green: #47a019;
-  --lavender: #f6e2ff;
-  --code-bg: #f7f2f2;
-  --code-border: #e7dede;
+  --tan: #d6bdbe;
+  --pink: #f6e2ff;
+  /* Neutrals and tints derived from them */
+  --ink: #14181d;
+  --slate: #3c4753;
+  --grey: #6b7480;
+  --mid-grey: #8a94a0;
+  --rule: #c9ced6;
+  --blue-10: #e8ebef;
+  --green-12: #e9f4e3;
+  --lavender: #fbf3ff;
+  --tan-30: #f3ebeb;
+  --sans: "Space Grotesk", system-ui, sans-serif;
+  --serif: "Spectral", Georgia, serif;
   --mono: "Liberation Mono", ui-monospace, Menlo, Consolas, monospace;
 }
 
 body, .reveal-viewport { background: #fff; }
-.reveal {
-  font-family: "Space Grotesk", system-ui, sans-serif;
-  font-size: 38px; color: var(--ink);
-}
+/* Body runs a little above the brand's 24–26px so it reads from the back of a hall */
+.reveal { font-family: var(--serif); font-size: 32px; color: var(--ink); }
 .reveal .slides { text-align: left; }
-.reveal .slides section { padding: 0 20px; }
-
-.reveal h1, .reveal h2, .reveal h3 { color: var(--navy); margin: 0 0 0.5em; line-height: 1.15; }
-.reveal h1 { font-family: "Spectral", Georgia, serif; font-weight: 600; font-size: 2.3em; }
-.reveal h1 em { font-style: italic; }
-.reveal h2 { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 1.35em; }
+/* Brand grid: 96px side margins, 80px top, 56px footer band */
+.reveal .slides section { box-sizing: border-box; height: 1080px; padding: 80px 96px 120px; }
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: var(--sans); color: var(--navy); text-transform: none; letter-spacing: normal; text-shadow: none;
+}
+.reveal h1 { font-weight: 700; font-size: 84px; line-height: 1.05; margin: 0 0 24px; }
+.reveal h1 em { font-style: normal; }
+.reveal h2 { font-weight: 700; font-size: 56px; line-height: 1.1; margin: 0 0 32px; }
 .reveal h2 .num { color: var(--green); margin-right: 0.35em; }
-.reveal p { margin: 0 0 0.6em; line-height: 1.4; }
-.reveal strong { color: var(--navy); }
+.reveal h3 { font-weight: 500; font-size: 30px; line-height: 1.2; margin: 0 0 12px; }
+.reveal p { margin: 0 0 20px; line-height: 1.4; }
+.reveal strong, .reveal b { color: var(--navy); font-weight: 600; }
 .reveal a { color: var(--navy); }
+.reveal ul { display: block; margin: 0 0 20px 1.1em; }
+.reveal li { margin: 10px 0; line-height: 1.4; }
+.reveal li::marker { color: var(--green); }
 
-.reveal .muted { color: var(--muted); }
-.reveal .small { font-size: 0.7em; }
 .reveal .eyebrow {
-  font-size: 0.45em; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--faint); margin-bottom: 0.6em;
+  font-family: var(--sans); font-weight: 500; font-size: 20px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--green); margin: 0 0 16px;
 }
+.reveal .lead { font-size: 34px; color: var(--slate); }
+.reveal .muted { color: var(--grey); }
+.reveal .small { font-size: 26px; }
+.reveal .label { font-family: var(--sans); font-weight: 500; font-size: 24px; color: var(--navy); margin: 0 0 12px; }
 
-/* Code: warm-grey panels like the handout */
+/* Code: Tan 30% panels with a green rule */
 .reveal pre {
-  position: relative; width: 100%; margin: 0 0 0.6em; box-shadow: none; font-size: 0.56em;
-  background: var(--code-bg); border-left: 4px solid var(--navy); border-radius: 2px;
+  position: relative; width: 100%; margin: 0 0 24px; box-shadow: none; font-size: 28px;
+  background: var(--tan-30); border-left: 6px solid var(--green); border-radius: 0;
 }
-.reveal pre code { max-height: 540px; padding: 0.8em 1em; background: var(--code-bg); color: var(--ink); font-family: var(--mono); line-height: 1.45; }
+.reveal pre.tight { font-size: 24px; }
+.reveal pre code { max-height: 680px; padding: 24px 32px; background: var(--tan-30); color: var(--ink); font-family: var(--mono); line-height: 1.45; }
 .reveal code { font-family: var(--mono); }
-.reveal p code, .reveal li code { color: var(--navy); background: var(--code-bg); padding: 0 0.2em; font-size: 0.85em; }
-.reveal .hljs-comment { color: var(--faint); }
+.reveal p code, .reveal li code, .reveal .card code { color: var(--navy); background: var(--tan-30); padding: 0 0.2em; font-size: 0.85em; }
+.reveal .hljs-comment { color: var(--grey); }
 .reveal .hljs-keyword, .reveal .hljs-built_in, .reveal .hljs-type, .reveal .hljs-attr { color: var(--navy); font-weight: 700; }
 .reveal .hljs-string, .reveal .hljs-number, .reveal .hljs-literal { color: var(--green); }
-.reveal .hljs-title, .reveal .hljs-function .hljs-title { color: #8a3ab9; }
+.reveal .hljs-title, .reveal .hljs-function .hljs-title, .reveal .hljs-variable, .reveal .hljs-template-variable { color: var(--slate); }
 .reveal .hljs-tag, .reveal .hljs-name { color: var(--navy); }
-.reveal .hljs-variable, .reveal .hljs-template-variable { color: #8a3ab9; }
 .reveal .hljs.has-highlights tr:not(.highlight-line) { opacity: 0.35; }
-.reveal .hljs-ln-numbers { color: var(--faint); }
+.reveal .hljs-ln-numbers { color: var(--mid-grey); }
 
-/* The handout's three summary cards */
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.card { background: var(--lavender); padding: 22px 24px; font-size: 0.62em; line-height: 1.4; }
-.card h3 { font-family: var(--mono); font-size: 1em; font-weight: 700; margin: 0 0 0.6em; }
-.card h3 span { font-family: "Space Grotesk", sans-serif; color: var(--ink); }
-.card .muted { font-size: 0.9em; margin: 0; }
+/* Layout helpers: brand gutters, 48 for three columns, 64 for two */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.split.wide-left { grid-template-columns: 1.3fr 1fr; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+.card { background: var(--lavender); border-top: 4px solid var(--navy); padding: 32px 36px; font-size: 26px; line-height: 1.4; }
+.card h3 { font-family: var(--mono); font-weight: 700; font-size: 26px; }
+.card h3 span { font-family: var(--sans); font-weight: 400; color: var(--ink); }
+.card .muted { margin: 0; }
+.reveal img { max-width: 100%; }
 
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
-.split.wide-left { grid-template-columns: 1.25fr 1fr; }
-.label { font-size: 0.5em; font-weight: 700; color: var(--navy); margin-bottom: 0.3em; }
-
-.reveal ul { display: block; margin-left: 1em; }
-.reveal li { margin: 0.35em 0; }
-
-/* Title slide: navy band like the handout header */
-.reveal .slides section.title-slide { padding: 0; }
-.title-wrap { height: 630px; display: flex; flex-direction: column; }
-.title-band {
-  flex: 1; background: var(--navy); color: #fff; padding: 70px 70px 50px; position: relative;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.title-band .eyebrow { color: #e8eef5; opacity: 0.85; }
-.title-band h1 { color: #fff; font-size: 2.4em; margin-bottom: 0.4em; max-width: 80%; }
-.title-band p { color: #e8eef5; font-size: 0.72em; max-width: 78%; }
-.title-band img { position: absolute; top: 48px; right: 60px; width: 180px; }
-.title-links { padding: 26px 70px; font-size: 0.6em; color: var(--muted); }
-.title-links b { color: var(--navy); margin-right: 0.3em; }
-.title-links span { margin-right: 2em; }
-
-.handoff {
-  font-family: "Spectral", Georgia, serif; font-size: 1.25em; line-height: 1.35; color: var(--navy);
-  border-left: 6px solid var(--green); padding-left: 0.8em; margin-bottom: 1em;
-}
-
-.reveal video { max-width: 100%; max-height: 500px; }
-
-/* Footer on every slide except the title, like the handout's footer */
-.deck-footer {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
-  display: flex; justify-content: center; align-items: center; gap: 2em;
-  padding: 10px 0 14px; font: 13px "Space Grotesk", sans-serif; color: var(--muted);
-}
-.deck-footer b { color: var(--navy); margin-right: 0.3em; }
-.deck-footer img { height: 22px; vertical-align: middle; margin-left: 0.4em; }
-.title .deck-footer { display: none; }
-.reveal .controls { color: var(--navy); }
-.reveal .progress { color: var(--navy); }
-.reveal .slide-number { background: transparent; color: var(--faint); }
-
-/* Undo reveal white-theme defaults that fight the handout look */
-.reveal h1, .reveal h2, .reveal h3, .reveal h4 { text-transform: none; letter-spacing: normal; text-shadow: none; }
-.reveal pre.tight { font-size: 0.48em; }
-
-/* Registry deck */
+/* Status pills */
 .reveal .tag {
-  display: inline-block; font-size: 0.42em; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 0.25em 0.7em; margin-left: 0.6em; vertical-align: middle; border-radius: 2px;
+  display: inline-flex; align-items: center; gap: 8px; margin-left: 12px; vertical-align: middle;
+  font-family: var(--sans); font-weight: 500; font-size: 18px; padding: 4px 14px; border-radius: 999px;
 }
-.reveal .tag.now { background: var(--green); color: #fff; }
-.reveal .tag.soon { background: var(--lavender); color: var(--navy); }
-.links-slide { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 0.6em; }
-.links-slide .card { font-size: 0.7em; }
-.links-slide .card h3 { font-family: "Space Grotesk", sans-serif; font-size: 1.15em; color: var(--navy); }
-.reveal .title-band p code { background: rgba(255, 255, 255, 0.14); color: #fff; padding: 0 0.2em; }
-.people .card { font-size: 0.75em; }
-.people .card h3 { font-family: "Space Grotesk", sans-serif; font-size: 1.3em; color: var(--navy); }
-.people .card p { margin: 0 0 0.2em; }
+.reveal .tag::before { content: ""; width: 10px; height: 10px; border-radius: 50%; box-sizing: border-box; }
+.reveal .tag.now { background: var(--green-12); color: var(--navy); }
+.reveal .tag.now::before { background: var(--green); }
+.reveal .tag.soon { background: var(--blue-10); color: var(--slate); }
+.reveal .tag.soon::before { border: 2px solid var(--mid-grey); }
+
+/* Navy slides: cover, section dividers, closing (data-background-color="#1a3b60") */
+.reveal section.navy { color: #fff; }
+.reveal section.navy h1, .reveal section.navy h2 { color: #fff; }
+.reveal section.navy p, .reveal section.navy .eyebrow { color: var(--pink); }
+.reveal section.navy b { color: #fff; }
+.reveal section.navy code { background: rgba(255, 255, 255, 0.14); color: #fff; }
+.reveal section.navy { padding-bottom: 56px; }
+.brand-logo { width: 280px; display: block; }
+.cover { display: flex; flex-direction: column; height: 100%; }
+.cover .content { margin-top: auto; max-width: 1300px; }
+.cover .bottom {
+  display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.4); font: 20px var(--sans); color: #fff;
+}
+
+.divider { display: flex; align-items: flex-end; gap: 56px; height: 100%; }
+.divider .numeral { font: 400 280px/0.8 var(--serif); color: var(--green); }
+.divider .text { border-left: 2px solid rgba(255, 255, 255, 0.4); padding-left: 56px; max-width: 1100px; }
+.divider .text p:last-child { margin: 0; }
+
+.closing { display: flex; flex-direction: column; height: 100%; }
+.closing .row { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 96px; }
+.closing .qr { background: #fff; padding: 24px; text-align: center; }
+.closing .qr img { width: 280px; display: block; }
+.reveal section.navy .closing .qr p { color: var(--navy); font: 18px var(--sans); margin: 12px 0 0; }
+
+/* Agenda (brand p.38) */
+.agenda { display: grid; grid-template-columns: 1fr 1.7fr; gap: 64px; }
+.agenda ol { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--rule); }
+.agenda li {
+  display: grid; grid-template-columns: 72px 1fr auto; margin: 0; padding: 22px 0;
+  border-top: 1px solid var(--rule); line-height: 1.3;
+}
+.agenda .n { font: 500 28px var(--sans); color: var(--green); }
+.agenda h3 { margin: 0 0 4px; }
+.agenda li p { margin: 0; font-size: 22px; color: var(--grey); }
+.agenda .min { font: 400 24px var(--sans); color: var(--slate); }
+
+/* Pink slides: big idea and key takeaways (data-background-color="#f6e2ff") */
+.quote { position: relative; margin-top: 160px; padding-left: 140px; max-width: 1500px; }
+.quote::before { content: "\201C"; position: absolute; left: 0; top: -50px; font: 600 220px/1 var(--serif); color: var(--green); }
+.quote p { font: italic 600 60px/1.25 var(--serif); color: var(--navy); margin: 0 0 24px; }
+.takeaways { list-style: none; margin: 64px 0 0; padding: 0; }
+.takeaways li { display: grid; grid-template-columns: 120px 1fr; align-items: baseline; margin: 0 0 44px; }
+.takeaways .n { font: 400 96px/1 var(--serif); color: var(--green); }
+.takeaways p { font: 500 36px/1.35 var(--sans); color: var(--navy); margin: 0; }
+.takeaways p span { display: block; font: 400 26px/1.4 var(--serif); color: var(--slate); margin-top: 6px; }
+
+/* Scaffold's handoff question */
+.reveal .handoff {
+  font-family: var(--serif); font-size: 52px; line-height: 1.3; color: var(--navy);
+  border-left: 6px solid var(--green); padding-left: 40px; margin: 120px 0 48px;
+}
+
+/* Brand footer, added to light slides by deck.js */
+.slide-footer {
+  position: absolute; left: 96px; right: 96px; bottom: 0; height: 56px;
+  display: flex; align-items: center; gap: 14px; border-top: 2px solid var(--tan);
+  font: 16px var(--sans); color: var(--grey);
+}
+.slide-footer img { height: 22px; }
+.slide-footer .page { margin-left: auto; }
+.reveal .controls { color: var(--navy); }
+.reveal .progress { color: var(--green); }

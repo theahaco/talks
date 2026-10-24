@@ -13,21 +13,16 @@
 <div class="reveal"><div class="slides">
 
 <!-- R1 · 7:00–7:45 · answers Scaffold's handoff question -->
-<section class="title-slide" data-state="title">
-  <div class="title-wrap">
-  <div class="title-band">
-    <p class="eyebrow">Stellar Registry · HackMeridian 2026</p>
-    <img src="assets/aha-logo-white.png" alt="The Aha Company">
-    <h1>Name it. Publish it. <em>Import it.</em></h1>
-    <p>Scaffold runs your contract locally. The registry is how it gets to testnet: publish
-      the Wasm, deploy it under a name, and anyone, your own app included, uses that name
-      instead of a <code>C…</code> address.</p>
-  </div>
-  <div class="title-links">
-    <span><b>Docs</b>stellarscaffold.org/docs/registry</span>
-    <span><b>Code</b>github.com/stellar-registry</span>
-    <span><b>Explorer</b>rgstry.xyz</span>
-  </div>
+<section class="navy" data-background-color="#1a3b60">
+  <div class="divider">
+    <span class="numeral">03</span>
+    <div class="text">
+      <p class="eyebrow">Stellar Registry</p>
+      <h2>Name it. Publish it. Import it.</h2>
+      <p>Scaffold runs your contract locally. The registry is how it gets to testnet: publish
+        the Wasm, deploy it under a name, and anyone, your own app included, uses that name
+        instead of a <code>C…</code> address.</p>
+    </div>
   </div>
   <aside class="notes">
     Answer the last Scaffold slide: your contract works locally, Scaffold won't deploy it
@@ -37,10 +32,10 @@
 </section>
 
 <!-- RB · the big idea -->
-<section>
+<section data-background-color="#f6e2ff">
   <p class="eyebrow">The big idea</p>
-  <p class="handoff">Give your contract a name, not an address.<br>
-  Ship it to testnet, and let anyone use it by that name.</p>
+  <div class="quote"><p>Give your contract a name, not an address.
+    Ship it to testnet, and let anyone use it by that name.</p></div>
   <aside class="notes">One sentence to hold onto for the next eight minutes. ~10s.</aside>
 </section>
 
@@ -149,7 +144,7 @@ contracts:
       <li><strong>02. Decision:</strong> publish the Wasm and deploy it as <code>unverified/guess-the-number</code>.</li>
       <li><strong>03. Result:</strong> testnet has a named contract, scaffold.yml points at it, and the app gets a typed client.</li>
     </ul>
-    <img src="assets/explorer-testnet-contracts.png" alt="Named contracts on testnet.rgstry.xyz" width="520">
+    <img src="assets/explorer-testnet-contracts.png" alt="Named contracts on testnet.rgstry.xyz" width="820">
   </div>
   <aside class="notes">
     Recap of R3 and R4 as one story. The screenshot is testnet.rgstry.xyz/contracts: every
@@ -181,23 +176,14 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
 </section>
 
 <!-- RK · key takeaways -->
-<section>
-  <p class="eyebrow">Three things to remember</p>
-  <h2>Key takeaways</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Name it</h3>
-      <p>Publish under <code>unverified/</code>. Anyone can, with no approval.</p>
-    </div>
-    <div class="card">
-      <h3>Ship it</h3>
-      <p>Publish and deploy with the registry: that's how you reach testnet.</p>
-    </div>
-    <div class="card">
-      <h3>Use it</h3>
-      <p>Point scaffold.yml or <code>import_contract!</code> at a name, never a copied address.</p>
-    </div>
-  </div>
+<section data-background-color="#f6e2ff">
+  <p class="eyebrow">Key takeaways</p>
+  <h2>What to take away</h2>
+  <ol class="takeaways">
+    <li><span class="n">1</span><p>Name it.<span>Publish under <code>unverified/</code>. Anyone can, with no approval.</span></p></li>
+    <li><span class="n">2</span><p>Ship it.<span>Publish and deploy with the registry: that's how you reach testnet.</span></p></li>
+    <li><span class="n">3</span><p>Use it.<span>Point scaffold.yml or <code>import_contract!</code> at a name, never a copied address.</span></p></li>
+  </ol>
   <aside class="notes">~30s.</aside>
 </section>
 
@@ -218,27 +204,10 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
 
 </div></div>
 
-<div class="deck-footer">
-  <span><b>Docs</b>stellarscaffold.org</span>
-  <span><b>Code</b>github.com/stellar-registry</span>
-  <span><b>Explorer</b>rgstry.xyz</span>
-  <span>Built by<img src="assets/aha-logo-navy.png" alt="The Aha Company"></span>
-</div>
 
 <script src="vendor/reveal.js/dist/reveal.js"></script>
 <script src="vendor/reveal.js/plugin/highlight/highlight.js"></script>
 <script src="vendor/reveal.js/plugin/notes/notes.js"></script>
-<script>
-  Reveal.initialize({
-    hash: true,
-    slideNumber: "c/t",
-    transition: "fade",
-    center: true,
-    width: 1280,
-    height: 720,
-    margin: 0.06,
-    plugins: [RevealHighlight, RevealNotes],
-  });
-</script>
+<script src="deck.js"></script>
 </body>
 </html>

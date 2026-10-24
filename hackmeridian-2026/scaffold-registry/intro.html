@@ -13,21 +13,17 @@
 <div class="reveal"><div class="slides">
 
 <!-- I1 · session title -->
-<section class="title-slide" data-state="title">
-  <div class="title-wrap">
-  <div class="title-band">
-    <p class="eyebrow">The Aha Company · HackMeridian 2026</p>
-    <img src="assets/aha-logo-white.png" alt="The Aha Company">
-    <h1>Stellar Scaffold <em>+</em> Stellar Registry</h1>
-    <p>Build your dApp locally with Scaffold, then ship it to testnet and share it by name
-      with Registry. One project, start to finish.</p>
-    <p><b>Pam Selle</b> · Principal Engineer, The Aha Company</p>
-  </div>
-  <div class="title-links">
-    <span><b>Scaffold</b>stellarscaffold.org</span>
-    <span><b>Registry</b>rgstry.xyz</span>
-    <span><b>Agent skills</b>skills.stellar.org</span>
-  </div>
+<section class="navy" data-background-color="#1a3b60">
+  <div class="cover">
+    <img class="brand-logo" src="assets/aha-horizontallogo_white.svg" alt="The Aha Company">
+    <div class="content">
+      <p class="eyebrow">The Aha Company · HackMeridian 2026</p>
+      <h1>Stellar Scaffold +<br>Stellar Registry</h1>
+      <p class="lead">Build your dApp locally with Scaffold, then ship it to testnet and share it by
+        name with Registry. One project, start to finish.</p>
+      <p><b>Pam Selle</b> · Principal Engineer, The Aha Company</p>
+    </div>
+    <div class="bottom"><span>stellarscaffold.org · rgstry.xyz · skills.stellar.org</span><span>© 2026 The Aha Company</span></div>
   </div>
   <aside class="notes">
     Session opener: two tools, one flow. Scaffold first, then Registry picks up where it
@@ -37,15 +33,21 @@
 
 <!-- I2 · agenda -->
 <section>
-  <p class="eyebrow">Today's route</p>
-  <h2>Session agenda</h2>
-  <ul>
-    <li><strong>01</strong> Who we are · 1 min</li>
-    <li><strong>02</strong> Stellar Scaffold: from idea to working dApp · 7 min</li>
-    <li><strong>03</strong> Stellar Registry: to testnet, by name · 8 min</li>
-    <li><strong>04</strong> Your next step, and questions</li>
-  </ul>
-  <p class="small muted">The Aha Company builds developer tools for Stellar, including Stellar Scaffold and Stellar Registry.</p>
+  <div class="agenda">
+    <div>
+      <p class="eyebrow">Agenda</p>
+      <h2>What we'll cover</h2>
+      <p class="lead">HackMeridian 2026</p>
+      <p class="small muted">The Aha Company builds developer tools for Stellar, including Stellar
+        Scaffold and Stellar Registry.</p>
+    </div>
+    <ol>
+      <li><span class="n">01</span><div><h3>Who we are</h3><p>The Aha Company and today's speakers</p></div><span class="min">1 min</span></li>
+      <li><span class="n">02</span><div><h3>Stellar Scaffold</h3><p>From idea to working dApp, fast</p></div><span class="min">7 min</span></li>
+      <li><span class="n">03</span><div><h3>Stellar Registry</h3><p>To testnet, by name</p></div><span class="min">8 min</span></li>
+      <li><span class="n">04</span><div><h3>Your next step</h3><p>What to do tonight, then questions</p></div><span class="min"></span></li>
+    </ol>
+  </div>
   <aside class="notes">
     One line on who we are, then the route. ~20s.
   </aside>
@@ -55,7 +57,7 @@
 <section>
   <p class="eyebrow">Speaker</p>
   <h2>Pam Selle</h2>
-  <p class="muted">Principal Engineer · The Aha Company</p>
+  <p class="lead">Principal Engineer · The Aha Company</p>
   <p>Over a decade in software engineering and leadership. Pam maintained Terraform Core at
     HashiCorp, worked on web properties and cloud infrastructure at Comcast, and has long
     organized events in the JavaScript community.</p>
@@ -67,7 +69,7 @@
 <section>
   <p class="eyebrow">Speaker</p>
   <h2>Willem Wyndham</h2>
-  <p class="muted">Chief Science Officer · The Aha Company</p>
+  <p class="lead">Chief Science Officer · The Aha Company</p>
   <p>Studied programming languages and computer security for his PhD at the University of
     Maryland, then joined NEAR Protocol as a Contract Runtime Engineer, working on Rust and
     WebAssembly.</p>
@@ -77,26 +79,10 @@
 
 </div></div>
 
-<div class="deck-footer">
-  <span><b>Docs</b>stellarscaffold.org</span>
-  <span><b>Registry</b>rgstry.xyz</span>
-  <span>Built by<img src="assets/aha-logo-navy.png" alt="The Aha Company"></span>
-</div>
 
 <script src="vendor/reveal.js/dist/reveal.js"></script>
 <script src="vendor/reveal.js/plugin/highlight/highlight.js"></script>
 <script src="vendor/reveal.js/plugin/notes/notes.js"></script>
-<script>
-  Reveal.initialize({
-    hash: true,
-    slideNumber: "c/t",
-    transition: "fade",
-    center: true,
-    width: 1280,
-    height: 720,
-    margin: 0.06,
-    plugins: [RevealHighlight, RevealNotes],
-  });
-</script>
+<script src="deck.js"></script>
 </body>
 </html>
