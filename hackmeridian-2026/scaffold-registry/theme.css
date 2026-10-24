@@ -166,3 +166,6 @@ body, .reveal-viewport { background: #fff; }
 /* Speakers slide */
 .speakers h3 { font-size: 40px; font-weight: 700; margin-bottom: 4px; }
 .speakers .lead { font-size: 28px; color: var(--grey); }
+
+/* Slides that are just a bulleted list get bigger type */
+.reveal .slides > section > ul > li { font-size: 52px; margin: 28px 0; line-height: 1.25; }
