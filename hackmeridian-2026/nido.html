@@ -153,7 +153,7 @@
       <div class="label">With Nido: approve the app once</div>
       <p class="stat">0</p>
       <p>redirects per guess after that: the app’s session key signs</p>
-      <p><span class="tag now">Approve in Nido · 2 passkey taps</span><span class="tag soon">Guess</span><span class="tag soon">Guess</span><span class="tag soon">Guess …</span></p>
+      <p><span class="tag now">Approve in Nido · 1 passkey tap</span><span class="tag soon">Guess</span><span class="tag soon">Guess</span><span class="tag soon">Guess …</span></p>
     </div>
   </div>
   <p class="small muted">Freighter screen: illustrative mock from the template walkthrough</p>
@@ -161,7 +161,7 @@
     <ul>
       <li>Next, signing.</li>
       <li>With a classic wallet, every signature sends the user to the wallet to read and confirm. In Guess the Number, that's one trip per guess.</li>
-      <li>With Nido, the user approves your app once, in Nido: two passkey taps for this sample. After that, signing never redirects: the app's session key signs each guess, and it just goes through.</li>
+      <li>With Nido, the user approves your app once, in Nido: one passkey tap for this sample. After that, signing never redirects: the app's session key signs each guess, and it just goes through.</li>
     </ul>
     <p>About 45s.</p>
   </aside>
@@ -432,7 +432,7 @@ npm run clients:testnet && npm run dev
     <img src="assets/nido-policy-rules.png" alt="Nido's rule cards for guess and guess-xlm: session can call transfer on the XLM contract, up to 2 XLM per day" width="600">
     <div>
       <div class="label">The raw Perch policy document</div>
-      <pre class="tight"><code class="language-json" data-trim data-line-numbers="1-15|3-4,14|5-6|7|10">
+      <pre class="tight"><code class="language-json" data-trim data-line-numbers="1-15|3-5,14|5-6|7|10">
 { "network": "Test SDF Network ; September 2015",
   "rules": [
     { "name": "admin", …, "scope": { "type": "self-admin" } },
@@ -490,7 +490,7 @@ npm run clients:testnet && npm run dev
       <li>Who pays fees? Nido's relayer pays for account creation and grants. The app's session key pays each call's fee; on testnet Friendbot funds it, on mainnet the app would have to.</li>
       <li>Where does the session key live? In the browser's localStorage for the app's origin. It never holds the user's funds; whoever reads it can spend at most the cap until the grants expire.</li>
       <li>Revoking? Not in Nido yet; grants end at their expiry.</li>
-      <li>Why two confirmations? Nido's grant page takes one contract per request, and a guess touches two contracts.</li>
+      <li>Why only one confirmation for two grants? One approval installs the session key plus all its rules, both grants, at once.</li>
     </ul>
     <p><em>Sources: github.com/nidohq/scaffold-template (NIDO.md, README.md), github.com/nidohq/scaffold-template/pull/10 (UX walkthrough), stellarscaffold.org/docs/community-templates</em></p>
   </aside>
