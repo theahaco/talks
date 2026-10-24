@@ -19,8 +19,9 @@
     <p class="eyebrow">Stellar Registry · Hackathon quick reference</p>
     <img src="assets/aha-logo-white.png" alt="The Aha Company">
     <h1>Name it. Publish it. <em>Import it.</em></h1>
-    <p>Give your contract a name, not a <code>C…</code> address. Anyone can find it, deploy
-      their own copy, or call it from Rust or the CLI, and the name resolves on every network.</p>
+    <p>Scaffold runs your contract locally. The registry is how it gets to testnet: publish
+      the Wasm, deploy it under a name, and anyone, your own app included, uses that name
+      instead of a <code>C…</code> address.</p>
   </div>
   <div class="title-links">
     <span><b>Docs</b>stellarscaffold.org/docs/registry</span>
@@ -29,9 +30,9 @@
   </div>
   </div>
   <aside class="notes">
-    Answer the question on the last Scaffold slide. Without the registry your contract is
-    CAAXJ…HI4M, different on every network, pasted into every frontend. With it, it's
-    unverified/guess-the-number. Same headline as the handout. ~45s.
+    Answer the last Scaffold slide: your contract works locally, Scaffold won't deploy it
+    to testnet, the registry does. And once it has a name, other people can find it and
+    you can use theirs the same way. Same headline as the handout. ~45s.
   </aside>
 </section>
 
@@ -42,7 +43,7 @@
     <div class="card fragment">
       <h3>Wasm <span>= published code</span></h3>
       <p>Reusable contract code under a name and a semantic version. Only its author can publish new versions.</p>
-      <p class="muted">unverified/guess-the-number@0.0.2</p>
+      <p class="muted">unverified/guess-the-number@1.0.0</p>
     </div>
     <div class="card fragment">
       <h3>Contract <span>= deployed instance</span></h3>
@@ -61,76 +62,72 @@
   </aside>
 </section>
 
-<!-- R3 · 8:45–10:30 -->
+<!-- R3 · 8:45–10:30 · payoff for Scaffold's "next talk" lines -->
 <section>
-  <h2>Publish, deploy, call by name</h2>
-  <pre><code class="language-bash" data-trim data-line-numbers="1-3|5-8|10-11">
+  <h2>Ship to testnet by name</h2>
+  <pre class="tight"><code class="language-bash" data-trim data-line-numbers="1-2|4-6|8-11|13">
+stellar keys fund me --network testnet
+stellar keys use me
+
 stellar registry publish \
   --wasm target/stellar/testnet/guess_the_number.wasm \
-  --wasm-name unverified/guess-the-number      # version from Cargo.toml
+  --wasm-name unverified/guess-the-number --binver 1.0.0
 
 stellar registry deploy \
   --contract-name unverified/guess-the-number \
-  --wasm-name unverified/guess-the-number \
-  -- --admin alice                             # constructor args after --
+  --wasm-name unverified/guess-the-number --version 1.0.0 \
+  -- --admin me                        # constructor args after --
 
-stellar registry create-alias unverified/guess-the-number
-stellar contract invoke --id guess-the-number -- --help
+stellar registry fetch-contract-id unverified/guess-the-number   # C… for scaffold.yml
   </code></pre>
-  <div class="fragment">
-    <div class="label">Already deployed it with Scaffold? Name that one instead:</div>
-    <pre class="tight"><code class="language-bash" data-trim>
-stellar registry register-contract --contract-name unverified/guess-the-number --contract-address C…
-    </code></pre>
-  </div>
-  <p class="small muted">Add <code>--dry-run</code> to preview any write.</p>
+  <p class="small muted">The Wasm is what <code>stellar scaffold build --compile-only</code> wrote with
+    <code>STELLAR_NETWORK=testnet</code>. Add <code>--dry-run</code> to preview any write.</p>
   <aside class="notes">
-    Picks up from the publish line on Scaffold's last slide. Publish: the Wasm Scaffold
-    built, version comes from Cargo.toml (cargo_inherit). Deploy: a named instance,
-    constructor args after --. create-alias drops the channel, so the CLI can call it as
-    guess-the-number. --help lists every function. register-contract names a contract
-    that's already live. ~1:45.
+    These are the two "next talk" lines from Scaffold's ship slide. Fund the testnet
+    account and make it the default. Publish the Wasm Scaffold compiled under a name and
+    version. Deploy a named instance from it; constructor args go after --. Then fetch the
+    C… address: that's what goes in scaffold.yml next. CLI users can also run
+    create-alias and invoke it by name. ~1:45.
   </aside>
 </section>
 
 <!-- R4 · 10:30–12:00 -->
 <section>
-  <h2>Use theirs in scaffold.yml</h2>
+  <h2>Point scaffold.yml at it</h2>
   <div class="split">
     <div>
       <div class="label">Today <span class="tag now">works now</span></div>
-      <pre><code class="language-bash" data-trim>
-stellar registry fetch-contract-id \
-  unverified/guess-the-number
-      </code></pre>
-      <pre><code class="language-yaml" data-trim data-line-numbers="3-4">
+      <pre class="tight"><code class="language-yaml" data-trim data-line-numbers="4-7|5-7">
 contracts:
   guess-the-number:
-    type: contract
-    source: C…   # from fetch-contract-id
     networks:
+      local:              # built from contracts/
       testnet:
+        type: contract    # already deployed: fetch it
+        source: C...      # from fetch-contract-id
       </code></pre>
     </div>
     <div class="fragment">
       <div class="label">By name <span class="tag soon">coming soon</span></div>
-      <pre><code class="language-yaml" data-trim data-line-numbers="3-4">
+      <pre class="tight"><code class="language-yaml" data-trim data-line-numbers="5-7">
 contracts:
   guess-the-number:
-    type: registry
-    source: unverified/guess-the-number@0.0.2
     networks:
+      local:              # built from contracts/
       testnet:
+        type: registry    # resolve the name
+        source: unverified/guess-the-number
       </code></pre>
       <p class="small muted">Tracked in stellar-scaffold/cli#617.</p>
     </div>
   </div>
-  <p class="small">Either way, Scaffold generates a typed <code>guessTheNumber</code> client in <code>app-lib/clients</code>.</p>
+  <p class="small">Then <code>stellar scaffold build --network testnet</code> regenerates the typed
+    <code>guessTheNumber</code> client against testnet. Same for anyone else's contract.</p>
   <aside class="notes">
-    Builds on Scaffold's survival-kit tip (type: contract). Today: resolve the name once,
-    paste the address. Coming soon: scaffold.yml takes the registry name directly; the
-    config schema already accepts type: registry, the build doesn't yet (cli#617). If #617
-    ships before the event, drop the left column. ~1:30.
+    The same per-network entry as Scaffold's ship slide, filled in. local still builds
+    from contracts/; testnet points at the deployed contract. Today you paste the C…
+    address from fetch-contract-id. Coming soon: the registry name goes straight into
+    scaffold.yml (cli#617). If #617 ships before the event, drop the left column. ~1:30.
   </aside>
 </section>
 
@@ -152,34 +149,36 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
   <aside class="notes">
     The template contract already uses the registry for XLM (contracts/guess-the-number/src/xlm.rs).
     import_contract! turns a name into a client bound to its address, built from the
-    on-chain Wasm. Scaffold's .env already sets STELLAR_NETWORK=testnet. Short on time:
+    on-chain Wasm. Set STELLAR_NETWORK=testnet in .env, as on Scaffold's ship slide. Short on time:
     show only the import_contract! line. ~1:15.
   </aside>
 </section>
 
 <!-- R6 · 13:15–13:45 · cut if running long -->
 <section>
-  <h2>Browse and upgrade</h2>
+  <h2>Find contracts, ship new versions</h2>
   <div class="split">
     <div>
-      <div class="label">See what's published</div>
-      <p class="small"><strong>testnet.rgstry.xyz</strong> and <strong>stellar.rgstry.xyz</strong>
-        list every Wasm and contract, with versions and owners.</p>
+      <div class="label">Depend on someone else's</div>
+      <p class="small">Browse <strong>rgstry.xyz</strong> (and testnet.rgstry.xyz) for published
+        Wasms and named contracts, then add one to scaffold.yml or <code>import_contract!</code> it by name.</p>
     </div>
     <div>
-      <div class="label">Ship a new version</div>
-      <pre><code class="language-bash" data-trim>
+      <div class="label">Ship a new version of yours</div>
+      <pre class="tight"><code class="language-bash" data-trim>
+stellar registry publish … --binver 1.1.0
 stellar registry upgrade \
   --contract-name unverified/guess-the-number \
   --wasm-name unverified/guess-the-number
       </code></pre>
     </div>
   </div>
-  <p class="small muted">Bump the version in Cargo.toml and publish first. Upgrade calls the contract's own <code>upgrade</code>; its admin signs.</p>
+  <p class="small muted">Upgrade calls the contract's own <code>upgrade</code>, so its admin signs. Same name, same address.</p>
   <aside class="notes">
-    Cut this slide if over 13:00. Show the explorer page for the contract from R3 if
-    there's a browser tab ready. Upgrade uses the latest published version unless
-    --version is given. ~30s.
+    Cut this slide if over 13:00. Matches the "Handy extras" tip on the Scaffold handout:
+    browse rgstry.xyz for contracts to depend on. Upgrade uses the latest published
+    version unless --version is given; the address doesn't change, so scaffold.yml
+    doesn't either. ~30s.
   </aside>
 </section>
 
@@ -188,7 +187,7 @@ stellar registry upgrade \
   <h2>Registry survival kit</h2>
   <ul>
     <li>Auth failure on publish? You used a bare name. Add <code>unverified/</code></li>
-    <li><code>Error(Contract, #5)</code>: that contract name is taken. <code>#8</code>: bump the version</li>
+    <li><code>Error(Contract, #5)</code>: that contract name is taken. <code>#8</code>: publish a higher <code>--binver</code></li>
     <li>Macro can't find a contract? <code>STELLAR_NETWORK</code> wasn't set at build time</li>
     <li><code>deploy … -- --help</code> prints the constructor's arguments</li>
     <li>Teach your agent: Registry skill at <strong>skills.stellar.org</strong></li>
