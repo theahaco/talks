@@ -71,4 +71,4 @@ Alternative considered: **Slidev** (Markdown + Vue, live-editable code blocks). 
 2. Split: Scaffold ~7 min, Registry ~8 min (can shift toward Scaffold if needed).
 3. Demo: live, with a pre-recorded fallback Ellie may record.
 4. Slides: reveal.js, vendored locally, shared `theme.css`.
-5. Slide code lives in theahaco/talks under `hackmeridian-2026/scaffold-registry/`.
+5. Slide code lives in theahaco/talks under `hackmeridian-2026/`.
