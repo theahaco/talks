@@ -148,14 +148,12 @@ Creating new Stellar project in ./my-app
 <section>
   <h2>Your frontend: React, Svelte or none</h2>
   <p class="small">Pick <code>react</code>, <code>svelte</code> or <code>none</code> at <code>init</code>. The React and Svelte templates ship wallet connect, network switching, and a
-    working <code>GuessTheNumber</code> component, all using the same generated clients.</p>
-  <pre><code class="language-ts" data-trim>
-import { guessTheNumber } from "@stellar-scaffold/app-lib/clients"   // both
-  </code></pre>
+    working <code>GuessTheNumber</code> component, all using the same generated clients: <code>import { guessTheNumber } from "@stellar-scaffold/app-lib/clients"</code>.</p>
+  <p class="small muted">Only need contracts? <code>stellar scaffold init my-app --template none</code> (or pick <em>none</em>) skips the frontend entirely: no <code>app/</code>, <code>app-lib</code> or generated clients.</p>
   <div class="split">
     <div>
       <div class="label">React · GuessTheNumber.tsx</div>
-      <pre><code class="language-ts" data-trim>
+      <pre class="tight"><code class="language-ts" data-trim>
 const { address, signTransaction } =
   useWallet()
 const tx = await guessTheNumber.guess(
@@ -167,7 +165,7 @@ await tx.signAndSend({ signTransaction })
     </div>
     <div>
       <div class="label">Svelte · GuessTheNumber.svelte</div>
-      <pre><code class="language-ts" data-trim>
+      <pre class="tight"><code class="language-ts" data-trim>
 import { address, signTransaction }
   from "../stores/wallet"
 
@@ -179,7 +177,6 @@ await tx.signAndSend({ signTransaction })
       </code></pre>
     </div>
   </div>
-  <p class="small muted">Only need contracts? <code>stellar scaffold init my-app --template none</code> (or pick <em>none</em>) skips the frontend entirely: no <code>app/</code>, <code>app-lib</code> or generated clients.</p>
   <aside class="notes">
     <ul>
       <li>Both templates ship wallet connect, network switching and a working guess-the-number game.</li>
@@ -272,11 +269,12 @@ console.log(result)   // "higher" | "lower" | "yes"
 <!-- 7 · 5:05–5:45 -->
 <section>
   <h2>Add a contract</h2>
-  <pre><code class="language-bash" data-trim>
+  <p class="small muted"><code>stellar scaffold generate</code> writes the crate but does not add it to scaffold.yml; do that yourself.</p>
+  <pre class="tight"><code class="language-bash" data-trim>
 stellar scaffold generate contract --ls   # list examples: stellar/…, oz/…
 stellar scaffold generate contract --from oz/nft-royalties   # or --from-wizard
   </code></pre>
-  <pre class="tight"><code class="language-yaml" data-trim data-line-numbers="1-12|2|3-4|5-10|11-12">
+  <pre class="dense"><code class="language-yaml" data-trim data-line-numbers="1-12|2|3-4|5-10|11-12">
 contracts:
   my-nft:                   # client name; exported as myNft
     type: workspace         # built from contracts/, deployed locally
@@ -290,7 +288,6 @@ contracts:
     networks:               # where your app uses this contract
       local:
   </code></pre>
-  <p class="small muted"><code>stellar scaffold generate</code> writes the crate but does not add it to scaffold.yml; do that yourself.</p>
   <aside class="notes">
     <ul>
       <li>Don't start from a blank file: --ls lists ready-made examples from Stellar's soroban-examples and from OpenZeppelin.</li>

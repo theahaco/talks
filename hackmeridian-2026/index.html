@@ -233,14 +233,12 @@ Creating new Stellar project in ./my-app
 <section>
   <h2>Your frontend: React, Svelte or none</h2>
   <p class="small">Pick <code>react</code>, <code>svelte</code> or <code>none</code> at <code>init</code>. The React and Svelte templates ship wallet connect, network switching, and a
-    working <code>GuessTheNumber</code> component, all using the same generated clients.</p>
-  <pre><code class="language-ts" data-trim>
-import { guessTheNumber } from "@stellar-scaffold/app-lib/clients"   // both
-  </code></pre>
+    working <code>GuessTheNumber</code> component, all using the same generated clients: <code>import { guessTheNumber } from "@stellar-scaffold/app-lib/clients"</code>.</p>
+  <p class="small muted">Only need contracts? <code>stellar scaffold init my-app --template none</code> (or pick <em>none</em>) skips the frontend entirely: no <code>app/</code>, <code>app-lib</code> or generated clients.</p>
   <div class="split">
     <div>
       <div class="label">React · GuessTheNumber.tsx</div>
-      <pre><code class="language-ts" data-trim>
+      <pre class="tight"><code class="language-ts" data-trim>
 const { address, signTransaction } =
   useWallet()
 const tx = await guessTheNumber.guess(
@@ -252,7 +250,7 @@ await tx.signAndSend({ signTransaction })
     </div>
     <div>
       <div class="label">Svelte · GuessTheNumber.svelte</div>
-      <pre><code class="language-ts" data-trim>
+      <pre class="tight"><code class="language-ts" data-trim>
 import { address, signTransaction }
   from "../stores/wallet"
 
@@ -264,7 +262,6 @@ await tx.signAndSend({ signTransaction })
       </code></pre>
     </div>
   </div>
-  <p class="small muted">Only need contracts? <code>stellar scaffold init my-app --template none</code> (or pick <em>none</em>) skips the frontend entirely: no <code>app/</code>, <code>app-lib</code> or generated clients.</p>
   <aside class="notes">
     <ul>
       <li>Both templates ship wallet connect, network switching and a working guess-the-number game.</li>
@@ -357,11 +354,12 @@ console.log(result)   // "higher" | "lower" | "yes"
 <!-- 7 · 5:05–5:45 -->
 <section>
   <h2>Add a contract</h2>
-  <pre><code class="language-bash" data-trim>
+  <p class="small muted"><code>stellar scaffold generate</code> writes the crate but does not add it to scaffold.yml; do that yourself.</p>
+  <pre class="tight"><code class="language-bash" data-trim>
 stellar scaffold generate contract --ls   # list examples: stellar/…, oz/…
 stellar scaffold generate contract --from oz/nft-royalties   # or --from-wizard
   </code></pre>
-  <pre class="tight"><code class="language-yaml" data-trim data-line-numbers="1-12|2|3-4|5-10|11-12">
+  <pre class="dense"><code class="language-yaml" data-trim data-line-numbers="1-12|2|3-4|5-10|11-12">
 contracts:
   my-nft:                   # client name; exported as myNft
     type: workspace         # built from contracts/, deployed locally
@@ -375,7 +373,6 @@ contracts:
     networks:               # where your app uses this contract
       local:
   </code></pre>
-  <p class="small muted"><code>stellar scaffold generate</code> writes the crate but does not add it to scaffold.yml; do that yourself.</p>
   <aside class="notes">
     <ul>
       <li>Don't start from a blank file: --ls lists ready-made examples from Stellar's soroban-examples and from OpenZeppelin.</li>
@@ -831,6 +828,7 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
 <section>
   <p class="eyebrow">The old way vs with Nido</p>
   <h2>Getting in</h2>
+  <p class="small muted">Freighter screen: illustrative mock from the template walkthrough</p>
   <div class="split">
     <div>
       <div class="label">The old way: a wallet extension</div>
@@ -859,7 +857,6 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
       </div>
     </div>
   </div>
-  <p class="small muted">Freighter screen: illustrative mock from the template walkthrough</p>
   <aside class="notes">
     <ul>
       <li>Here's what that changes, starting with getting in.</li>
@@ -899,6 +896,7 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
 <section>
   <p class="eyebrow">The old way vs with Nido</p>
   <h2>Approve once, then no redirects</h2>
+  <p class="small muted">Freighter screen: illustrative mock from the template walkthrough</p>
   <div class="split">
     <div>
       <div class="label">The old way: every signature goes to the wallet</div>
@@ -917,7 +915,6 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
       <p><span class="tag now">Approve in Nido · 1 passkey tap</span><span class="tag soon">Guess</span><span class="tag soon">Guess</span><span class="tag soon">Guess …</span></p>
     </div>
   </div>
-  <p class="small muted">Freighter screen: illustrative mock from the template walkthrough</p>
   <aside class="notes">
     <ul>
       <li>Next, signing.</li>
@@ -964,6 +961,7 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
 <section data-background-color="#f6e2ff">
   <p class="eyebrow">Summary</p>
   <h2>What Nido gives you</h2>
+  <p class="small muted">Built on OpenZeppelin’s Smart Account and Relayer foundations.</p>
   <div class="split">
     <div>
       <div class="label">For your users</div>
@@ -982,7 +980,6 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
       </ol>
     </div>
   </div>
-  <p class="small muted">Built on OpenZeppelin’s Smart Account and Relayer foundations.</p>
   <aside class="notes">
     <ul>
       <li>So, what Nido gives you.</li>
@@ -1064,7 +1061,7 @@ npm run clients:testnet && npm run dev
     </div>
     <div>
       <div class="label">GuessTheNumber.tsx</div>
-      <pre class="tight"><code class="language-diff" data-trim>
+      <pre class="dense"><code class="language-diff" data-trim>
 +const grants: Grant[] = [
 +  { target: guessTheNumber.options.contractId,
 +    functions: ["guess"],
@@ -1193,7 +1190,8 @@ npm run clients:testnet && npm run dev
     <img src="assets/nido-policy-rules.png" alt="Nido's rule cards for guess and guess-xlm: session can call transfer on the XLM contract, up to 2 XLM per day" width="600">
     <div>
       <div class="label">The raw Perch policy document</div>
-      <pre class="tight"><code class="language-json" data-trim data-line-numbers="1-15|3-5,14|5-6|7|10">
+      <p class="small">Amounts are in stroops, 10,000,000 to the XLM. The account stores this document’s hash on chain.</p>
+      <pre class="dense"><code class="language-json" data-trim data-line-numbers="1-15|3-5,14|5-6|7|10">
 { "network": "Test SDF Network ; September 2015",
   "rules": [
     { "name": "admin", …, "scope": { "type": "self-admin" } },
@@ -1210,7 +1208,6 @@ npm run clients:testnet && npm run dev
   "signers": [{ "id": "admin", … }, { "id": "session", … }],
   "version": 1 }
       </code></pre>
-      <p class="small">Amounts are in stroops, 10,000,000 to the XLM. The account stores this document’s hash on chain.</p>
     </div>
   </div>
   <aside class="notes">
