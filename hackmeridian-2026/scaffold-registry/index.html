@@ -173,11 +173,24 @@ my-app/
 └── .env           local settings
     </code></pre>
   </div>
-  <p class="small muted">Needs Rust, Node, the Stellar CLI, and Docker. Scaffold and Registry install together as <code>stellar</code> plugins.</p>
+  <div class="split wide-left">
+    <div>
+      <div class="label"><code>init</code> asks which frontend you want</div>
+      <pre class="tight"><code class="language-plaintext" data-trim>
+$ stellar scaffold init my-app
+Creating new Stellar project in ./my-app
+? Pick a framework ›
+❯ react
+  svelte
+  none (no frontend)
+      </code></pre>
+    </div>
+    <p class="small muted">Needs Rust, Node, the Stellar CLI, and Docker. Scaffold and Registry install together as <code>stellar</code> plugins.</p>
+  </div>
   <aside class="notes">
     Sections 1 and 2 of the handout. Install Registry alongside Scaffold: it's how you get to
     testnet later. cargo binstall downloads prebuilt binaries, so it's much faster than
-    cargo install, which compiles from source. Skip prompts with --template react|svelte|none, -p &lt;package-manager&gt;, -y. ~40s.
+    cargo install, which compiles from source. Show the framework prompt; skip prompts with --template react|svelte|none, -p &lt;package-manager&gt;, -y. ~40s.
   </aside>
 </section>
 
