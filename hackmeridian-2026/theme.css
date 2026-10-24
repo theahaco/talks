@@ -177,6 +177,10 @@ body, .reveal-viewport { background: #fff; }
 .resource-cards .card h3 { font: 700 44px/1.15 var(--sans); color: var(--navy); margin-bottom: 8px; }
 .resource-cards .card p { font: 30px/1.4 var(--mono); color: var(--slate); margin: 0; }
 
+/* Case study steps */
+.reveal .case-steps { margin-left: 0; list-style: none; }
+.reveal .case-steps li { font-size: 36px; line-height: 1.35; margin: 0 0 28px; }
+
 /* Speakers slide */
 .speakers h3 { font-size: 40px; font-weight: 700; margin-bottom: 4px; }
 .speakers .lead { font-size: 28px; color: var(--grey); }
