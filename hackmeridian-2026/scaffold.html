@@ -271,13 +271,17 @@ setHint(tx.result)   // "higher" | "lower" | "yes"
 stellar scaffold generate contract --ls   # list examples: stellar/…, oz/…
 stellar scaffold generate contract --from oz/nft-royalties   # or --from-wizard
   </code></pre>
-  <pre><code class="language-yaml" data-trim data-line-numbers="1-8|2|3-4|5-6|7-8">
+  <pre class="tight"><code class="language-yaml" data-trim data-line-numbers="1-12|2|3-4|5-10|11-12">
 contracts:
   my-nft:                   # client name; exported as myNft
     type: workspace         # built from contracts/, deployed locally
     source: nft-royalties   # crate name in its Cargo.toml
     args:                   # constructor args, by parameter name
-      owner: ${account.me}
+      uri: https://example.com/nft/
+      name: My NFT
+      symbol: MNFT
+      admin: ${account.me}
+      manager: ${account.me}
     networks:               # where your app uses this contract
       local:
   </code></pre>
