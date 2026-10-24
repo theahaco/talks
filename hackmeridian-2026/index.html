@@ -849,7 +849,6 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
       <div class="label">With Nido: one passkey</div>
       <div class="with-shot">
         <img src="assets/nido-passkey.png" alt="Nido's create-with-a-passkey screen" width="400">
-        <div>
         <ul class="small">
           <li>Face ID or a fingerprint</li>
           <li>Nothing to write down</li>
@@ -857,8 +856,6 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
           <li>Or any key type, e.g. post-quantum</li>
           <li>Recovery: add a trusted friend to get back in</li>
         </ul>
-        <img src="assets/nido-passkey-signin.png" alt="1Password's Sign in with a passkey prompt for Nidohq" width="384">
-        </div>
       </div>
     </div>
   </div>
@@ -868,7 +865,6 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
       <li>Here's what that changes, starting with getting in.</li>
       <li>The old way, a new user installs a wallet extension, creates a password, writes down twelve words, switches to the right network, and funds the account. Every one of those is a place people drop off.</li>
       <li>With Nido, it's one passkey: Face ID or a fingerprint. Nothing to write down, and on testnet the account arrives with five test XLM, ready to use.</li>
-      <li>Coming back is the same passkey: that's the sign-in prompt, here from 1Password, for the Guess the Number app.</li>
     </ul>
     <p>About 55s.</p>
   </aside>
@@ -1133,6 +1129,7 @@ npm run clients:testnet && npm run dev
       <h3>No new round-trip through Nido.</h3>
       <p class="small">The app’s session key signs each call itself, and the account checks it against the grants.</p>
       <p class="small muted">A classic G-address wallet still works: <code>submitCall</code> signs with it as before.</p>
+      <img class="shot" src="assets/nido-passkey-signin.png" alt="1Password's Sign in with a passkey prompt for Nidohq" width="700">
     </div>
   </div>
   <aside class="notes">
@@ -1142,6 +1139,7 @@ npm run clients:testnet && npm run dev
       <li>After, it's one call: submitCall, with the user's address and a function that builds the same guess.</li>
       <li>And here's the part I like: there's no new round-trip through Nido. The app's session key signs each call itself, and the account checks it against the grants the user approved. Nido isn't in the loop.</li>
       <li>If the user connected a classic G-address wallet instead, submitCall still signs with it the old way.</li>
+      <li>The passkey still matters: that's the sign-in prompt, here from 1Password, for the Guess the Number app.</li>
     </ul>
     <p>About 1:15.</p>
   </aside>
