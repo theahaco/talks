@@ -5,7 +5,7 @@
 **Order:** Scaffold first, Registry second. Scaffold is "build your app", Registry is "share and reuse contracts by name", which is where the handout already points (step 5).
 **One takeaway:** one command gets you contracts, a frontend, a local network and typed clients that rebuild every time you save.
 
-Source for content: `handout/stellar-scaffold-hackathon-handout.pdf`.
+Source for content: the v2 Scaffold hackathon handout (Chad's update, 2026-10-21), which moves testnet deploys from Scaffold to Registry.
 
 ## Slide-by-slide
 
@@ -13,14 +13,14 @@ Source for content: `handout/stellar-scaffold-hackathon-handout.pdf`.
 |---|------|-------|---------|-------|
 | 1 | 0:00–0:30 | **From idea to working dApp, fast** | Handout header as the title slide: navy band, one-line pitch, Docs/Code/Registry links. | |
 | 2 | 0:30–1:00 | **The hackathon problem** | Hand-wiring builds, deploys, contract IDs, bindings and wallet code before writing a feature. | |
-| 3 | 1:00–1:45 | **Three things to remember** | The handout's three cards: `scaffold.yml` = the map, `app-lib/clients` = generated, `npm run dev` = the loop. | |
-| 4 | 1:45–2:25 | **1–2 Set up and start a project** | `cargo install`, `doctor`, `init`, `npm run dev`, plus the project tree. | Step-through code |
+| 3 | 1:00–1:45 | **Three things to remember** | The handout's three cards: `scaffold.yml` = your dependencies, `app-lib/clients` = generated, `npm run dev` = the loop. | |
+| 4 | 1:45–2:25 | **1–2 Set up and start a project** | `cargo install` of both the Scaffold and Registry CLIs, `doctor`, `init` (asks template + package manager), `npm run dev`, plus the project tree. | Step-through code |
 | 5 | 2:25–3:05 | **Your frontend: React or Svelte** | Pick at `init`. Both templates ship wallet connect, network switching and `GuessTheNumber`. The same client call is shown side by side in React (`useWallet` hook) and Svelte (wallet store). `--template none` still gives `app-lib`. | |
 | 6 | 3:05–5:05 | **Demo: save → redeploy → typed client** | Add `hint()` to guess-the-number, save, watch rebuild/redeploy/regen, autocomplete in the component. | **Main live demo** (2 min) |
 | 7 | 5:05–5:45 | **3 Add a contract** | `generate contract --from oz/nft-royalties` and its `scaffold.yml` entry. | Step-through code |
-| 8 | 5:45–6:25 | **5 Go to testnet and ship** | `allow-deploy`, `config check`, `build --build-clients --network testnet`, `npm run build`. | |
-| 9 | 6:25–6:50 | **7–8 Hackathon survival kit** | `doctor`, `clean`, don't edit clients, `type: contract`, the agent skill. | |
-| 10 | 6:50–7:00 | **Handoff to Registry** | "How do other people find and reuse your contract?" plus the `stellar registry publish` line. | |
+| 8 | 5:45–6:25 | **5 Go to testnet and ship** | Scaffold only deploys locally. `build --compile-only`, then Registry `publish`/`deploy` (covered in the next talk), then a per-network `testnet: type: contract, source: C...` entry in `scaffold.yml`, `build --network testnet`, `npm run build`. | |
+| 9 | 6:25–6:50 | **7–8 Hackathon survival kit** | `doctor`, `clean`, testnet breaks but local works (rebuild with `--network testnet`), find dependencies at rgstry.xyz, the agent skill. | |
+| 10 | 6:50–7:00 | **Handoff to Registry** | "How do you get it onto testnet under a name, and use other people's without copying addresses?" plus the `stellar registry publish` line. | |
 
 Slide headings carry the handout's section numbers (1–2, 3, 5, 7–8) so the audience can follow along on the sheet.
 

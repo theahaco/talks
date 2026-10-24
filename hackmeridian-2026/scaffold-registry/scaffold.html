@@ -55,18 +55,18 @@
   <h2>Three things to remember</h2>
   <div class="cards">
     <div class="card fragment">
-      <h3>scaffold.yml <span>= the map</span></h3>
-      <p>One checked-in file lists your networks, accounts, and which contracts deploy where.</p>
+      <h3>scaffold.yml <span>= your dependencies</span></h3>
+      <p>Your app's contract dependencies, per network: what they are and where to get them.</p>
       <p class="muted">Secrets and machine settings go in .env.</p>
     </div>
     <div class="card fragment">
       <h3>app-lib/clients <span>= generated</span></h3>
-      <p>A typed client per contract, rewritten on every build. Import by name; never paste an address.</p>
+      <p>A typed client per contract, per network, regenerated on every build and gitignored. Import by name; never paste an address.</p>
       <p class="muted">Don't edit it: wrap clients under app/.</p>
     </div>
     <div class="card fragment">
       <h3>npm run dev <span>= the loop</span></h3>
-      <p>Save a contract and it rebuilds, redeploys, and regenerates its client.</p>
+      <p>Save a contract and it rebuilds, redeploys on the local network, and regenerates its client.</p>
       <p class="muted">App runs at localhost:5173.</p>
     </div>
   </div>
@@ -79,10 +79,11 @@
 <section>
   <h2><span class="num">1–2</span>Set up and start a project</h2>
   <div class="split wide-left">
-    <pre><code class="language-bash" data-trim data-line-numbers="1|2|3|4">
-cargo install --locked stellar-scaffold-cli
+    <pre><code class="language-bash" data-trim data-line-numbers="1-2|3|4|5">
+cargo install --locked \
+  stellar-scaffold-cli stellar-registry-cli
 stellar scaffold doctor   # checks your setup
-stellar scaffold init my-app   # react, svelte or none
+stellar scaffold init my-app   # template + package manager
 cd my-app && npm install && npm run dev
     </code></pre>
     <pre class="tight"><code class="language-plaintext" data-trim>
@@ -91,14 +92,14 @@ my-app/
 ├── app/           your frontend
 ├── app-lib/       wallet, network
 │   └── clients/   generated
-├── e2e/
-├── scaffold.yml   networks + contracts
+├── scaffold.yml   dependencies
 └── .env           local settings
     </code></pre>
   </div>
-  <p class="small muted">Needs Rust, Node, the Stellar CLI, and Docker. <code>doctor</code> tells you what's missing.</p>
+  <p class="small muted">Needs Rust, Node, the Stellar CLI, and Docker. Scaffold and Registry install together as <code>stellar</code> plugins.</p>
   <aside class="notes">
-    Sections 1 and 2 of the handout. Skip prompts with --template react|svelte|none -y. ~40s.
+    Sections 1 and 2 of the handout. Install Registry alongside Scaffold: it's how you get to
+    testnet later. Skip prompts with --template react|svelte|none, -p &lt;package-manager&gt;, -y. ~40s.
   </aside>
 </section>
 
@@ -186,11 +187,11 @@ stellar scaffold generate contract --from oz/nft-royalties   # or --from-wizard
   <pre><code class="language-yaml" data-trim data-line-numbers="1-8|2|3-4|5-6|7-8">
 contracts:
   my-nft:                   # client name; exported as myNft
-    type: workspace         # build + deploy from contracts/
+    type: workspace         # built from contracts/, deployed locally
     source: nft-royalties   # crate name in its Cargo.toml
     args:                   # constructor args, by parameter name
       owner: ${account.me}
-    networks:               # only exists on networks it lists
+    networks:               # where your app uses this contract
       local:
   </code></pre>
   <p class="small muted"><code>generate</code> writes the crate but does not add it to scaffold.yml; do that yourself.</p>
@@ -202,29 +203,31 @@ contracts:
 <!-- 8 · 5:45–6:25 -->
 <section>
   <h2><span class="num">5</span>Go to testnet and ship</h2>
+  <p class="small">Scaffold only deploys locally. Testnet contracts go through <strong>Stellar Registry</strong>; scaffold.yml just points at them.</p>
   <div class="split">
-    <pre><code class="language-yaml" data-trim>
-networks:
-  testnet:
-    accounts: [testnet-user]
-    allow-deploy: true
+    <pre class="tight"><code class="language-yaml" data-trim data-line-numbers="1-7|5-7">
 contracts:
   my-nft:
     networks:
-      local:
+      local:              # built from contracts/
       testnet:
+        type: contract    # already deployed: fetch it
+        source: C...      # ID from registry
     </code></pre>
-    <pre><code class="language-bash" data-trim data-line-numbers="1|2-3|4">
-stellar scaffold config check --network testnet
-stellar scaffold build --build-clients \
-  --network testnet
-npm run build   # static site in dist/
+    <pre class="tight"><code class="language-bash" data-trim data-line-numbers="1|2-3|4|5">
+stellar scaffold build --compile-only
+stellar registry publish ...  # next talk
+stellar registry deploy ...
+stellar scaffold build --network testnet
+npm run build                 # → dist/
     </code></pre>
   </div>
-  <p class="small muted">Set <code>STELLAR_NETWORK=testnet</code> in .env. Host <code>dist/</code> anywhere static.</p>
+  <p class="small muted">Set <code>STELLAR_NETWORK=testnet</code> in .env. Contracts can differ between networks: make sure the app still typechecks.</p>
   <aside class="notes">
-    Handout section 5. Deploys are off by default outside local, hence allow-deploy.
-    Same app code: clients are regenerated for testnet. ~40s.
+    Handout section 5. Big change from older Scaffold: no allow-deploy, no testnet deploys
+    from Scaffold. Build the Wasm, publish and deploy it with Registry (that's the next
+    talk), then point scaffold.yml's testnet entry at the deployed ID. build --network
+    testnet fetches it and regenerates the clients. ~40s.
   </aside>
 </section>
 
@@ -234,8 +237,8 @@ npm run build   # static site in dist/
   <ul>
     <li><code>stellar scaffold doctor</code>: anything broken, with a fix</li>
     <li><code>stellar scaffold clean</code>: changed constructor args? Start fresh</li>
-    <li>Don't edit <code>app-lib/clients</code>. Wrap clients under <code>app/</code></li>
-    <li><code>type: contract</code> + <code>source: C…</code>: typed client for any deployed contract</li>
+    <li>Works locally, breaks on testnet? Rebuild with <code>--network testnet</code> and fix type errors</li>
+    <li>Find contracts to depend on at <strong>rgstry.xyz</strong></li>
     <li>Teach your agent: Scaffold skill at <strong>skills.stellar.org</strong></li>
   </ul>
   <aside class="notes">
@@ -245,9 +248,9 @@ npm run build   # static site in dist/
 
 <!-- 10 · 6:50–7:00 · handoff -->
 <section>
-  <p class="handoff">Your contract is deployed.<br>
-  How do other people find and reuse it,<br>
-  and how do you use theirs without copying addresses?</p>
+  <p class="handoff">Your contract works locally.<br>
+  How do you get it onto testnet under a name,<br>
+  and use other people's without copying addresses?</p>
   <pre><code class="language-bash" data-trim>
 stellar registry publish …   # under unverified/
   </code></pre>
