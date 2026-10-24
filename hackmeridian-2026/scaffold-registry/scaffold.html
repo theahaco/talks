@@ -83,8 +83,8 @@
   <h2><span class="num">1–2</span>Set up and start a project</h2>
   <div class="split wide-left">
     <pre><code class="language-bash" data-trim data-line-numbers="1-2|3|4|5">
-cargo install --locked \
-  stellar-scaffold-cli stellar-registry-cli
+cargo binstall stellar-scaffold-cli stellar-registry-cli
+# no binstall? cargo install --locked (builds from source)
 stellar scaffold doctor   # checks your setup
 stellar scaffold init my-app   # template + package manager
 cd my-app && npm install && npm run dev
@@ -102,7 +102,8 @@ my-app/
   <p class="small muted">Needs Rust, Node, the Stellar CLI, and Docker. Scaffold and Registry install together as <code>stellar</code> plugins.</p>
   <aside class="notes">
     Sections 1 and 2 of the handout. Install Registry alongside Scaffold: it's how you get to
-    testnet later. Skip prompts with --template react|svelte|none, -p &lt;package-manager&gt;, -y. ~40s.
+    testnet later. cargo binstall downloads prebuilt binaries, so it's much faster than
+    cargo install, which compiles from source. Skip prompts with --template react|svelte|none, -p &lt;package-manager&gt;, -y. ~40s.
   </aside>
 </section>
 
