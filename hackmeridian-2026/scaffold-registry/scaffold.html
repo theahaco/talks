@@ -80,7 +80,7 @@
 
 <!-- 4 · 1:45–2:25 -->
 <section>
-  <h2><span class="num">1–2</span>Set up and start a project</h2>
+  <h2>Set up and start a project</h2>
   <div class="split wide-left">
     <pre><code class="language-bash" data-trim data-line-numbers="1-2|3|4|5">
 cargo binstall stellar-scaffold-cli stellar-registry-cli
@@ -225,7 +225,7 @@ setHint(tx.result)   // "higher" | "lower" | "yes"
 
 <!-- 7 · 5:05–5:45 -->
 <section>
-  <h2><span class="num">3</span>Add a contract</h2>
+  <h2>Add a contract</h2>
   <pre><code class="language-bash" data-trim>
 stellar scaffold generate contract --ls   # list examples: stellar/…, oz/…
 stellar scaffold generate contract --from oz/nft-royalties   # or --from-wizard
@@ -248,7 +248,7 @@ contracts:
 
 <!-- 8 · 5:45–6:25 -->
 <section>
-  <h2><span class="num">5</span>Go to testnet and ship</h2>
+  <h2>Go to testnet and ship</h2>
   <p class="small">By default Scaffold deploys only to your local network. To ship to testnet, publish and deploy with <strong>Stellar Registry</strong>, then point scaffold.yml at the deployed contract.</p>
   <div class="split">
     <pre class="tight"><code class="language-yaml" data-trim data-line-numbers="1-7|5-7">
@@ -291,7 +291,7 @@ npm run build                 # → dist/
 
 <!-- 9 · 6:25–6:50 -->
 <section>
-  <h2><span class="num">7–8</span>Hackathon survival kit</h2>
+  <h2>Hackathon survival kit</h2>
   <ul>
     <li><code>stellar scaffold doctor</code>: anything broken, with a fix</li>
     <li><code>stellar scaffold clean</code>: changed constructor args? Start fresh</li>

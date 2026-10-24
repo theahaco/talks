@@ -22,7 +22,7 @@ Source for content: the v2 Scaffold hackathon handout (Chad's update, 2026-10-21
 | 9 | 6:25–6:50 | **7–8 Hackathon survival kit** | `doctor`, `clean`, testnet breaks but local works (rebuild with `--network testnet`), find dependencies at rgstry.xyz, the agent skill. | |
 | 10 | 6:50–7:00 | **Handoff to Registry** | "How do you get it onto testnet under a name, and use other people's without copying addresses?" plus the `stellar registry publish` line. | |
 
-Slide headings carry the handout's section numbers (1–2, 3, 5, 7–8) so the audience can follow along on the sheet.
+Slide headings no longer carry the handout's section numbers (removed 2026-10-24); speaker notes still name the matching handout section.
 
 Buffer: target 6:30 of spoken content so the 7:00 slot absorbs a slow demo.
 
