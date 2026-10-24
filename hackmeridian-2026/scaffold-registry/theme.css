@@ -137,9 +137,9 @@ body, .reveal-viewport { background: #fff; }
 .agenda .min { font: 400 24px var(--sans); color: var(--slate); }
 
 /* Pink slides: big idea and key takeaways (data-background-color="#f6e2ff") */
-.quote { position: relative; margin-top: 160px; padding-left: 140px; max-width: 1500px; }
-.quote::before { content: "\201C"; position: absolute; left: 0; top: -50px; font: 600 220px/1 var(--serif); color: var(--green); }
-.quote p { font: italic 600 60px/1.25 var(--serif); color: var(--navy); margin: 0 0 24px; }
+.quote { margin-top: 140px; max-width: 1500px; }
+.quote::before { content: ""; display: block; width: 120px; height: 8px; background: var(--green); margin-bottom: 48px; }
+.quote p { font: 700 72px/1.15 var(--sans); color: var(--navy); margin: 0 0 24px; }
 .takeaways { list-style: none; margin: 64px 0 0; padding: 0; }
 .takeaways li { display: grid; grid-template-columns: 120px 1fr; align-items: baseline; margin: 0 0 44px; }
 .takeaways .n { font: 400 96px/1 var(--serif); color: var(--green); }
