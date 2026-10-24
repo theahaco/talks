@@ -126,3 +126,6 @@ body, .reveal-viewport { background: #fff; }
 .links-slide .card { font-size: 0.7em; }
 .links-slide .card h3 { font-family: "Space Grotesk", sans-serif; font-size: 1.15em; color: var(--navy); }
 .reveal .title-band p code { background: rgba(255, 255, 255, 0.14); color: #fff; padding: 0 0.2em; }
+.people .card { font-size: 0.75em; }
+.people .card h3 { font-family: "Space Grotesk", sans-serif; font-size: 1.3em; color: var(--navy); }
+.people .card p { margin: 0 0 0.2em; }

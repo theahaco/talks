@@ -2,9 +2,9 @@
 
 reveal.js 5.1.0, vendored in `vendor/` so it works with no internet.
 
-**Run:** open `index.html` for the joint session (Scaffold, then Registry), or `scaffold.html` / `registry.html` alone. Works from disk, or `npx serve .`.
+**Run:** open `index.html` for the joint session (intro and about slides, then Scaffold, then Registry), or `intro.html` / `scaffold.html` / `registry.html` alone. Works from disk, or `npx serve .`.
 
-**Edit:** change `scaffold.html` or `registry.html`, then run `node build-index.mjs` to regenerate `index.html`.
+**Edit:** change `intro.html`, `scaffold.html` or `registry.html`, then run `node build-index.mjs` to regenerate `index.html`.
 
 **Keys:** → next, ↓ demo recording (under slide 5), `S` speaker notes with timings, `F` fullscreen, `?` help.
 **PDF:** open `scaffold.html?print-pdf` in Chrome and print to PDF.
