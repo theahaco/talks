@@ -898,31 +898,31 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
 <!-- N4 · 2:30–3:15 -->
 <section>
   <p class="eyebrow">The old way vs with Nido</p>
-  <h2>Every action</h2>
+  <h2>Approve once, then no redirects</h2>
   <div class="split">
     <div>
-      <div class="label">The old way: sign every call with your main wallet</div>
+      <div class="label">The old way: every signature goes to the wallet</div>
       <div class="with-shot">
         <img src="assets/nido-freighter-confirm.png" alt="Freighter asking the user to confirm a guess transaction" width="400">
         <div>
           <p class="stat">1</p>
-          <p>popup per guess, to read and confirm</p>
+          <p>trip to the wallet per guess, to read and confirm</p>
         </div>
       </div>
     </div>
     <div>
-      <div class="label">With Nido: approve a session key once</div>
+      <div class="label">With Nido: approve the app once</div>
       <p class="stat">0</p>
-      <p>prompts per guess, after one approval</p>
-      <p><span class="tag now">Approve · 2 passkey taps</span><span class="tag soon">Guess</span><span class="tag soon">Guess</span><span class="tag soon">Guess …</span></p>
+      <p>redirects per guess after that: the app’s session key signs</p>
+      <p><span class="tag now">Approve in Nido · 2 passkey taps</span><span class="tag soon">Guess</span><span class="tag soon">Guess</span><span class="tag soon">Guess …</span></p>
     </div>
   </div>
   <p class="small muted">Freighter screen: illustrative mock from the template walkthrough</p>
   <aside class="notes">
     <ul>
-      <li>Next, every action.</li>
-      <li>With a classic wallet, every call your app makes is a popup the user has to read and confirm. In Guess the Number, that's one popup per guess.</li>
-      <li>With Nido, the user approves your app once. That's two passkey taps for this sample. After that, every guess just goes through. Zero prompts.</li>
+      <li>Next, signing.</li>
+      <li>With a classic wallet, every signature sends the user to the wallet to read and confirm. In Guess the Number, that's one trip per guess.</li>
+      <li>With Nido, the user approves your app once, in Nido: two passkey taps for this sample. After that, signing never redirects: the app's session key signs each guess, and it just goes through.</li>
     </ul>
     <p>About 45s.</p>
   </aside>
