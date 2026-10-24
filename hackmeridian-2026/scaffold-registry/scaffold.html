@@ -155,7 +155,7 @@ await tx.signAndSend({ signTransaction })
       </code></pre>
     </div>
   </div>
-  <p class="small muted">Prefer your own UI? <code>--template none</code> still gives you <code>app-lib</code> and the clients.</p>
+  <p class="small muted">Only need contracts? <code>stellar scaffold init my-app --template none</code> (or pick <em>none</em>) skips the frontend entirely: no <code>app/</code>, <code>app-lib</code> or generated clients.</p>
   <aside class="notes">
     Same client call, two frameworks: React uses the useWallet hook, Svelte uses a wallet
     store. The contract client is identical, so switching networks needs no code change. ~40s.
