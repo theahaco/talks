@@ -784,7 +784,7 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
   <aside class="notes">
     <ul>
       <li>I'm going to show you Nido: passkey accounts for your Stellar app.</li>
-      <li>First what it does for your users and your app, then how to add it with the Scaffold Stellar template. Questions at the end, together.</li>
+      <li>First what it does for your users and your app, then how to add it with the Scaffold Stellar template. Pam and I'll take questions at the end</li>
     </ul>
     <p>About 30s.</p>
     <p><em>Sources: github.com/nidohq/scaffold-template (NIDO.md, README.md), github.com/nidohq/scaffold-template/pull/10 (UX walkthrough), stellarscaffold.org/docs/community-templates</em></p>
@@ -814,10 +814,10 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
   <aside class="notes">
     <ul>
       <li>If you're new to Stellar, one thing first: Stellar has two kinds of accounts.</li>
-      <li>A G-address is an account with keys: one, or up to twenty with weights and thresholds. If you've used Ethereum, think of an externally owned account with multisig built in.</li>
-      <li>It can limit how many signatures an action needs, but not "this app may spend two XLM a day." The usual wallet is an extension and a seed phrase.</li>
-      <li>A C-address is a contract. Its code decides who can sign, which apps can act for it, which contracts they can call, how much they can spend, and until when. On Ethereum you'd call that a smart contract wallet.</li>
-      <li>Nido gives each of your users a C-address, behind one passkey.</li>
+      <li>A G-address is an account with keys: one, or up to twenty with weights and thresholds. </li>
+      <li>It require how many signatures an action needs, but not "this app may spend two XLM a day." The usual wallet is an extension and a seed phrase.</li>
+      <li>A C-address is a contract. Its code decides who can sign and what they do. Which contracts it can call, how much they can spend, and until when.</li>
+      <li>Nido gives each of your users a C-address, behind a passkey with the ability to add other kinds of keys </li>
     </ul>
     <p>About 50s.</p>
     <p><em>Sources: developers.stellar.org/docs/learn/fundamentals/transactions/signatures-multisig, developers.stellar.org/docs/build/guides/contract-accounts</em></p>
@@ -861,7 +861,7 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
     <ul>
       <li>Here's what that changes, starting with getting in.</li>
       <li>The old way, a new user installs an extension, creates a password, writes down twelve words, switches network, and funds the account. Every step is a place people drop off.</li>
-      <li>With Nido, it's one passkey: Face ID or a fingerprint. Nothing to write down, and on testnet the account arrives with five test XLM.</li>
+      <li>With Nido, it's one passkey: Face ID or a fingerprint. Nothing to write down, and on testnet the account arrives with  XLM.</li>
     </ul>
     <p>About 45s.</p>
   </aside>
@@ -1217,7 +1217,7 @@ npm run clients:testnet && npm run dev
     <ul>
       <li>The same policy both ways. On the left, Nido's card for guess-xlm: "session" can call transfer on the XLM contract, up to 2 XLM per day, until ledger 5382692.</li>
       <li>On the right, the raw Perch policy document, Perch being the policy language Nido accounts enforce. Click through: three rules, admin, guess and guess-xlm, and two signers, admin and session.</li>
-      <li>guess-xlm in full. args: it can only pay the game. cap: 20000000 stroops is 2 XLM, and 17280 ledgers at about five seconds each is a day. not-after-ledger is the expiry.</li>
+      <li>guess-xlm in full. args: it can only pay the game. cap: 20,000,000 stroops is 2 XLM, and 17280 ledgers at about five seconds each is a day. not-after-ledger is the expiry.</li>
       <li>The account stores the document's hash on chain, so what you read here is exactly what it enforces.</li>
     </ul>
     <p>About 1 min.</p>
