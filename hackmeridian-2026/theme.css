@@ -91,6 +91,8 @@ body, .reveal-viewport { background: #fff; }
 .reveal img { max-width: 100%; }
 /* Keep screenshots clear of the bottom of the stage screen */
 .reveal .slides section:not(.navy) img:not([src$=".svg"]) { width: auto; max-height: 420px; }
+/* Except where reading the screenshot matters more than the bottom edge */
+.reveal .slides section:not(.navy) img.big-shot:not([src$=".svg"]) { width: 580px; max-height: none; }
 
 /* Status pills */
 .reveal .tag {
