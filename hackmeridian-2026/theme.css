@@ -180,6 +180,7 @@ body, .reveal-viewport { background: #fff; }
 }
 .reveal table.compare th { font: 500 20px/1.35 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey); padding-left: 0; }
 .reveal table.compare thead th { color: var(--navy); border-bottom: 2px solid var(--navy); }
+.reveal table.compare thead th + th { padding-left: 24px; }
 .reveal table.compare th code { text-transform: none; letter-spacing: normal; }
 .reveal table.compare td code { color: var(--navy); background: var(--tan-30); padding: 0 0.2em; font-size: 0.85em; }
 .reveal table.compare .hl { background: var(--lavender); }
