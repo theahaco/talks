@@ -20,7 +20,7 @@
       <p class="eyebrow">Stellar Scaffold</p>
       <h2>From idea to working dApp, fast.</h2>
       <p>A toolkit for full-stack Stellar apps. One command gives you Rust smart contracts,
-        a React or Svelte frontend, a local network, and typed TypeScript clients that rebuild
+        a React, Svelte or no frontend, a local network, and typed TypeScript clients that rebuild
         every time your contract changes.</p>
     </div>
   </div>
@@ -86,7 +86,7 @@
 cargo binstall stellar-scaffold-cli stellar-registry-cli
 # no binstall? cargo install --locked (builds from source)
 stellar scaffold doctor   # checks your setup
-stellar scaffold init my-app   # template + package manager
+stellar scaffold init my-app   # react, svelte or none
 cd my-app && npm install && npm run dev
     </code></pre>
     <pre class="tight"><code class="language-plaintext" data-trim>
@@ -109,8 +109,8 @@ my-app/
 
 <!-- 5 · 2:25–3:05 · frontends -->
 <section>
-  <h2>Your frontend: React or Svelte</h2>
-  <p class="small">Pick one at <code>init</code>. Both templates ship wallet connect, network switching, and a
+  <h2>Your frontend: React, Svelte or none</h2>
+  <p class="small">Pick <code>react</code>, <code>svelte</code> or <code>none</code> at <code>init</code>. The React and Svelte templates ship wallet connect, network switching, and a
     working <code>GuessTheNumber</code> component, all using the same generated clients.</p>
   <pre><code class="language-ts" data-trim>
 import { guessTheNumber } from "@stellar-scaffold/app-lib/clients"   // both
