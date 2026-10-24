@@ -115,8 +115,7 @@ my-app/
 ├── app/           your frontend
 ├── app-lib/       wallet, network
 │   └── clients/   generated
-├── scaffold.yml   dependencies
-└── .env           local settings
+└── scaffold.yml   dependencies
     </code></pre>
   </div>
   <div class="split wide-left">
@@ -136,7 +135,7 @@ Creating new Stellar project in ./my-app
   <aside class="notes">
     <ul>
       <li>Install both CLIs. cargo binstall downloads prebuilt binaries, so it's much faster than cargo install, which compiles from source.</li>
-      <li>doctor checks Rust, Node, the Stellar CLI and Docker, and tells you what's missing.</li>
+      <li>doctor checks your toolchain and tells you what's missing. Run it again inside the project for the full check, including Node and Docker.</li>
       <li>init asks which frontend you want: react, svelte or none. Then npm install and npm run dev.</li>
       <li>Point at the tree: contracts/ for Rust, app/ for your frontend, app-lib/clients is generated, scaffold.yml lists your contracts.</li>
       <li>Tip for scripts: skip the prompts with --template, -p (package manager) and -y.</li>
@@ -281,7 +280,7 @@ stellar scaffold generate contract --from oz/nft-royalties   # or --from-wizard
 contracts:
   my-nft:                   # client name; exported as myNft
     type: workspace         # built from contracts/, deployed locally
-    source: nft-royalties   # crate name in its Cargo.toml
+    source: nft-royalties-example   # crate name in its Cargo.toml
     args:                   # constructor args, by parameter name
       uri: https://example.com/nft/
       name: My NFT
@@ -299,6 +298,7 @@ contracts:
       <li>Walk the highlights: the key becomes the client name, type workspace means built from contracts/, source is the crate name, args are constructor arguments by name, networks says where it exists.</li>
     </ul>
     <p>About 45s.</p>
+    <p><em>Prep: in a dry run on 2026-10-24, generate --from oz/… examples (nft-royalties and others) didn't compile against the project's stellar-tokens 0.8.0. Re-check before the talk.</em></p>
   </aside>
 </section>
 
@@ -321,15 +321,15 @@ stellar scaffold build --compile-only
 stellar registry publish ...  # next talk
 stellar registry deploy ...
 stellar scaffold build --network testnet
-npm run build                 # → dist/
+npm run build --workspace app # → app/dist/
     </code></pre>
   </div>
-  <p class="small muted">Set <code>STELLAR_NETWORK=testnet</code> in .env. Contracts can differ between networks: make sure the app still typechecks.</p>
+  <p class="small muted">Create a <code>.env</code> with <code>STELLAR_NETWORK=testnet</code>. Contracts can differ between networks: make sure the app still typechecks.</p>
   <aside class="notes">
     <ul>
       <li>By default Scaffold deploys only to your local network. You can opt in to more with allow-deploy, but the recommended path to testnet is Registry.</li>
       <li>The flow: compile the Wasm, publish and deploy it with the registry (that's the next talk), then point scaffold.yml's testnet entry at the deployed contract.</li>
-      <li>build --network testnet regenerates the clients against testnet, and npm run build gives you a static site to host anywhere.</li>
+      <li>build --network testnet regenerates the clients against testnet, and npm run build --workspace app gives you a static site in app/dist/ to host anywhere.</li>
     </ul>
     <p>About 40s.</p>
   </aside>

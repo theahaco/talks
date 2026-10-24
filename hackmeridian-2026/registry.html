@@ -167,6 +167,7 @@ stellar registry deploy \
       <li>Want to change the source? Use Scaffold's generate --from oz/… instead.</li>
     </ul>
     <p>About 45s.</p>
+    <p><em>Prep: in a dry run on 2026-10-24, deploying oz/ft-standard failed with TxMalformed (0.7.2 and 0.6.0). Re-check before the talk.</em></p>
   </aside>
 </section>
 
@@ -255,7 +256,7 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
     <ul>
       <li>You've already used the registry: the template's guess-the-number imports XLM with import_asset!.</li>
       <li>import_contract! turns any registered name into a typed client, with no address in your source.</li>
-      <li>Build with STELLAR_NETWORK set; Scaffold's .env does that for you.</li>
+      <li>Build with STELLAR_NETWORK set, inline or in a .env file.</li>
       <li>Asset imports like xlm resolve at runtime, so one Wasm works on any network. Named contracts resolve at build time, so after a redeploy, cargo clean and rebuild.</li>
     </ul>
     <p>About 1:15.</p>
