@@ -94,6 +94,59 @@ stellar registry fetch-contract-id unverified/guess-the-number   # C… for scaf
   </aside>
 </section>
 
+<!-- RR · root and sub-registries -->
+<section>
+  <p class="eyebrow">How names are organised</p>
+  <h2>One root registry, many sub-registries</h2>
+  <div class="split wide-left">
+    <pre class="tight"><code class="language-plaintext" data-trim>
+registry          root: bare names, manager-approved
+├── unverified/   open to anyone: use this weekend
+├── oz/           OpenZeppelin Wasms, ready to deploy
+├── circle/       circle/usdc
+├── soroswap/     soroswap/router, soroswap/factory
+├── blend/        blend/pool-factory-v2, …
+└── defindex/     defindex/xlm-vault, …
+    </code></pre>
+    <div>
+      <p class="small">A sub-registry is its own registry contract with its own rules, registered
+        by name in the root. Names read <code>&lt;sub-registry&gt;/&lt;name&gt;</code>.</p>
+      <p class="small">Sub-registries group related contracts under one prefix, like
+        <code>soroswap/router</code> and <code>soroswap/factory</code>.</p>
+    </div>
+  </div>
+  <p class="small muted">Browse them all at rgstry.xyz under Contracts.</p>
+  <aside class="notes">
+    The names they've seen so far all start with unverified/. That's a sub-registry: the
+    open one. The root holds bare names like registry and xlm, and needs a manager's
+    approval. oz, circle, soroswap, blend and defindex are sub-registries grouping each
+    project's contracts (all live on testnet.rgstry.xyz/contracts). ~45s.
+  </aside>
+</section>
+
+<!-- RO · OpenZeppelin Wasms -->
+<section>
+  <p class="eyebrow">Start from OpenZeppelin</p>
+  <h2>Deploy OpenZeppelin straight from <code>oz/</code></h2>
+  <pre class="tight"><code class="language-bash" data-trim data-line-numbers="1-3|4">
+stellar registry deploy \
+  --contract-name unverified/my-token \
+  --wasm-name oz/ft-standard \
+  -- --name "My Token" --symbol MTK --decimals 7 --owner me --initial_supply 1000000
+  </code></pre>
+  <p class="small">30+ pre-built combinations of OpenZeppelin Stellar Contracts, on testnet and
+    mainnet: <code>ft-standard</code>, <code>ft-capped</code>, <code>ft-pausable</code>,
+    <code>ft-allowlist</code>, <code>ft-votes</code>, <code>ft-vault</code>,
+    <code>nft-standard</code>, <code>nft-royalties</code>, <code>nft-enumerable</code>, …</p>
+  <p class="small muted">Your name, their Wasm: deploy into <code>unverified/</code> from any sub-registry. Want to edit the source instead? <code>stellar scaffold generate contract --from oz/…</code></p>
+  <aside class="notes">
+    The oz/ sub-registry holds every curated combination from
+    stellar-registry/oz-combined-wasms, currently built on OZ v0.7.2. Deploy picks the
+    latest version unless you pass --version. Constructor args after --; run
+    deploy … -- --help to see them. ~45s.
+  </aside>
+</section>
+
 <!-- R4 · 10:30–12:00 -->
 <section>
   <h2>Point scaffold.yml at it</h2>
