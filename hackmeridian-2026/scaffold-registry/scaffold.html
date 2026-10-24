@@ -227,6 +227,7 @@ setHint(tx.result)   // "higher" | "lower" | "yes"
 <section>
   <h2><span class="num">3</span>Add a contract</h2>
   <pre><code class="language-bash" data-trim>
+stellar scaffold generate contract --ls   # list examples: stellar/…, oz/…
 stellar scaffold generate contract --from oz/nft-royalties   # or --from-wizard
   </code></pre>
   <pre><code class="language-yaml" data-trim data-line-numbers="1-8|2|3-4|5-6|7-8">
@@ -241,7 +242,7 @@ contracts:
   </code></pre>
   <p class="small muted"><code>stellar scaffold generate</code> writes the crate but does not add it to scaffold.yml; do that yourself.</p>
   <aside class="notes">
-    Handout section 3. Start from vetted OpenZeppelin examples; --ls lists them. ~40s.
+    Handout section 3. Start from vetted examples: --ls lists Stellar's soroban-examples (stellar/…) and OpenZeppelin's (oz/…). ~40s.
   </aside>
 </section>
 
