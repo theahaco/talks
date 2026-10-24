@@ -250,8 +250,8 @@ pub fn hint(env: &Env, a_number: u64) -> Symbol {
   <pre><code class="language-ts" data-trim data-line-numbers="1|2-4">
 import { guessTheNumber } from "@stellar-scaffold/app-lib/clients"
 
-const tx = await guessTheNumber.hint({ a_number: BigInt(guess) })
-setHint(tx.result)   // "higher" | "lower" | "yes"
+const { result } = await guessTheNumber.hint({ a_number: 5n })
+console.log(result)   // "higher" | "lower" | "yes"
   </code></pre>
   <p class="small muted">A read-only call: no wallet signature needed. Same import in the Svelte template.</p>
   <aside class="notes">
