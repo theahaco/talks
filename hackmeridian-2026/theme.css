@@ -80,6 +80,7 @@ body, .reveal-viewport { background: #fff; }
 /* Layout helpers: brand gutters, 48 for three columns, 64 for two */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 .split.wide-left { grid-template-columns: 1.3fr 1fr; }
+.split.wide-right { grid-template-columns: 1fr 2fr; }
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
 .card { background: var(--lavender); border-top: 4px solid var(--navy); padding: 32px 36px; font-size: 26px; line-height: 1.4; }
 .card h3 { font-family: var(--mono); font-weight: 700; font-size: 26px; }
@@ -169,3 +170,19 @@ body, .reveal-viewport { background: #fff; }
 
 /* Slides that are just a bulleted list get bigger type */
 .reveal .slides > section > ul > li { font-size: 52px; margin: 28px 0; line-height: 1.25; }
+
+/* Nido: screenshot beside its text, comparison tables, big numbers, diffs */
+.with-shot { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; }
+.with-shot img, .reveal img.shot { display: block; border: 1px solid var(--rule); }
+.reveal table.compare { width: 100%; border-collapse: collapse; margin: 0 0 32px; font-size: 26px; }
+.reveal table.compare th, .reveal table.compare td {
+  text-align: left; vertical-align: top; padding: 14px 24px; border-bottom: 1px solid var(--rule); line-height: 1.35;
+}
+.reveal table.compare th { font: 500 20px/1.35 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey); padding-left: 0; }
+.reveal table.compare thead th { color: var(--navy); border-bottom: 2px solid var(--navy); }
+.reveal table.compare th code { text-transform: none; letter-spacing: normal; }
+.reveal table.compare td code { color: var(--navy); background: var(--tan-30); padding: 0 0.2em; font-size: 0.85em; }
+.reveal table.compare .hl { background: var(--lavender); }
+.reveal .stat { font: 400 200px/1 var(--serif); color: var(--green); margin: 0 0 12px; }
+.reveal .hljs-addition { color: var(--green); }
+.reveal .hljs-deletion { color: var(--grey); }
