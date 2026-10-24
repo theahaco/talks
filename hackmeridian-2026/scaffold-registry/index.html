@@ -27,8 +27,11 @@
     <div class="bottom"><span>stellarscaffold.org · rgstry.xyz · skills.stellar.org</span><span>© 2026 The Aha Company</span></div>
   </div>
   <aside class="notes">
-    Session opener: two tools, one flow. Scaffold first, then Registry picks up where it
-    leaves off. ~15s.
+    <ul>
+      <li>Welcome. We're The Aha Company: we build developer tools for Stellar.</li>
+      <li>In the next 15 minutes: build a dApp with Stellar Scaffold, then ship it to testnet and share it by name with Stellar Registry. One project, start to finish.</li>
+    </ul>
+    <p>About 15s.</p>
   </aside>
 </section>
 
@@ -50,7 +53,12 @@
     </ol>
   </div>
   <aside class="notes">
-    One line on who we are, then the route. ~20s.
+    <ul>
+      <li>Quick intro, then Scaffold (about 7 minutes), then Registry (about 8).</li>
+      <li>We finish with one thing to do during the hackathon, then questions.</li>
+      <li>Everything we show is on the handouts, so no need to copy commands down.</li>
+    </ul>
+    <p>About 20s.</p>
   </aside>
 </section>
 
@@ -77,8 +85,13 @@
     </div>
   </div>
   <aside class="notes">
-    Introduce ourselves and who's presenting what. Drop Willem's column if the Nido talk
-    isn't in this set. ~30s.
+    <ul>
+      <li>Introduce yourself: Principal Engineer at The Aha Company; before that, Terraform Core at HashiCorp and cloud infrastructure at Comcast.</li>
+      <li>Say you're presenting both Scaffold and Registry today.</li>
+      <li>Introduce Willem, our Chief Science Officer, who's presenting Nido.</li>
+    </ul>
+    <p>About 30s.</p>
+    <p><em>Prep: Drop Willem's column if the Nido talk isn't in this set.</em></p>
   </aside>
 </section>
 
@@ -99,8 +112,11 @@
     </div>
   </div>
   <aside class="notes">
-    Same first line as the handout they're holding. One command: contracts, frontend,
-    local network, typed clients. ~30s.
+    <ul>
+      <li>Scaffold is a toolkit for full-stack Stellar apps.</li>
+      <li>One command gives you Rust smart contracts, a frontend, a local network, and typed TypeScript clients that rebuild whenever your contract changes.</li>
+    </ul>
+    <p>About 20s.</p>
   </aside>
 </section>
 
@@ -109,7 +125,13 @@
   <p class="eyebrow">The big idea</p>
   <div class="quote"><p>Every save rebuilds, redeploys and regenerates your typed client.
     Spend the weekend on your app, not the plumbing.</p></div>
-  <aside class="notes">One sentence to hold onto for the next seven minutes. ~10s.</aside>
+  <aside class="notes">
+    <ul>
+      <li>Read the line out.</li>
+      <li>The point: you shouldn't spend the hackathon wiring up builds, deploys and bindings.</li>
+    </ul>
+    <p>About 10s.</p>
+  </aside>
 </section>
 
 <!-- 2 · 0:30–1:00 -->
@@ -123,7 +145,12 @@
     <li class="fragment"><strong>…then change one function and do it all again</strong></li>
   </ul>
   <aside class="notes">
-    This plumbing eats the first day of a hackathon. Scaffold makes it one loop. ~30s.
+    <ul>
+      <li>Click through the list as it builds: compile Rust to Wasm, deploy and copy the contract ID, generate bindings and paste the ID into the frontend, wire up a wallet.</li>
+      <li>Land the last line: change one function and you do it all again.</li>
+      <li>This plumbing can eat your whole first day. Scaffold turns it into one loop.</li>
+    </ul>
+    <p>About 30s.</p>
   </aside>
 </section>
 
@@ -148,7 +175,13 @@
     </div>
   </div>
   <aside class="notes">
-    These are the three boxes at the top of the handout. ~45s.
+    <ul>
+      <li>scaffold.yml: one file listing your contracts and where each one lives, per network. Secrets stay in .env.</li>
+      <li>app-lib/clients: a typed client per contract, regenerated on every build. Import it by name; don't edit it.</li>
+      <li>npm run dev: the loop. Save a contract and it rebuilds, redeploys locally and regenerates its client.</li>
+      <li>If they remember nothing else from Scaffold, it's these three.</li>
+    </ul>
+    <p>About 45s.</p>
   </aside>
 </section>
 
@@ -188,9 +221,14 @@ Creating new Stellar project in ./my-app
     <p class="small muted">Needs Rust, Node, the Stellar CLI, and Docker. Scaffold and Registry install together as <code>stellar</code> plugins.</p>
   </div>
   <aside class="notes">
-    Sections 1 and 2 of the handout. Install Registry alongside Scaffold: it's how you get to
-    testnet later. cargo binstall downloads prebuilt binaries, so it's much faster than
-    cargo install, which compiles from source. Show the framework prompt; skip prompts with --template react|svelte|none, -p &lt;package-manager&gt;, -y. ~40s.
+    <ul>
+      <li>Install both CLIs. cargo binstall downloads prebuilt binaries, so it's much faster than cargo install, which compiles from source.</li>
+      <li>doctor checks Rust, Node, the Stellar CLI and Docker, and tells you what's missing.</li>
+      <li>init asks which frontend you want: react, svelte or none. Then npm install and npm run dev.</li>
+      <li>Point at the tree: contracts/ for Rust, app/ for your frontend, app-lib/clients is generated, scaffold.yml lists your contracts.</li>
+      <li>Tip for scripts: skip the prompts with --template, -p (package manager) and -y.</li>
+    </ul>
+    <p>About 45s.</p>
   </aside>
 </section>
 
@@ -231,8 +269,12 @@ await tx.signAndSend({ signTransaction })
   </div>
   <p class="small muted">Only need contracts? <code>stellar scaffold init my-app --template none</code> (or pick <em>none</em>) skips the frontend entirely: no <code>app/</code>, <code>app-lib</code> or generated clients.</p>
   <aside class="notes">
-    Same client call, two frameworks: React uses the useWallet hook, Svelte uses a wallet
-    store. The contract client is identical, so switching networks needs no code change. ~40s.
+    <ul>
+      <li>Both templates ship wallet connect, network switching and a working guess-the-number game.</li>
+      <li>Same client call on both sides; only the wallet plumbing differs: a React hook versus a Svelte store.</li>
+      <li>Only need contracts? --template none skips the frontend entirely.</li>
+    </ul>
+    <p>About 40s.</p>
   </aside>
 </section>
 
@@ -254,8 +296,12 @@ pub fn hint(env: &Env, a_number: u64) -> Symbol {
   </code></pre>
   <p class="small muted"><code>hint()</code> is our example, not part of the template. It reuses the template's own <code>Self::number(env)</code>, the same helper <code>guess()</code> calls.</p>
   <aside class="notes">
-    No live demo: walk the loop in three slides. Step 1, add a read-only method to the
-    template contract. Nothing else changes: no deploy script, no bindings command. ~30s.
+    <ul>
+      <li>We'll walk the loop in three slides: edit, save, use.</li>
+      <li>Step one: add hint() to the template's guess-the-number contract. It's our example, built on the number helper the contract already has.</li>
+      <li>That's the whole change: no deploy script, no bindings command.</li>
+    </ul>
+    <p>About 30s.</p>
   </aside>
 </section>
 
@@ -274,8 +320,12 @@ pub fn hint(env: &Env, a_number: u64) -> Symbol {
   </code></pre>
   <p class="small">One save: the Wasm rebuilds, the contract redeploys locally, and the TypeScript client in <code>app-lib/clients</code> is regenerated with <code>hint</code> in it.</p>
   <aside class="notes">
-    This is the watcher output from npm run dev, trimmed. The first run also pulls the
-    Stellar quickstart Docker image; after that it's just rebuild, redeploy, regenerate. ~30s.
+    <ul>
+      <li>Step two: save the file.</li>
+      <li>npm run dev notices, rebuilds the Wasm, redeploys to the local network and regenerates the TypeScript client.</li>
+      <li>The very first run also pulls the Stellar quickstart Docker image, so give it a minute once.</li>
+    </ul>
+    <p>About 30s.</p>
   </aside>
 </section>
 
@@ -292,8 +342,12 @@ setHint(tx.result)   // "higher" | "lower" | "yes"
   </code></pre>
   <p class="small muted">A read-only call: no wallet signature needed. Same import in the Svelte template.</p>
   <aside class="notes">
-    The payoff: the method you wrote in Rust a moment ago is a typed function in the app,
-    argument names and all. No address, no copied bindings. ~30s.
+    <ul>
+      <li>Step three: the method you just wrote in Rust is a typed function in the frontend, with autocomplete and argument names.</li>
+      <li>It's read-only, so no wallet signature.</li>
+      <li>No address and no copied bindings anywhere.</li>
+    </ul>
+    <p>About 30s.</p>
   </aside>
 </section>
 
@@ -316,7 +370,12 @@ contracts:
   </code></pre>
   <p class="small muted"><code>stellar scaffold generate</code> writes the crate but does not add it to scaffold.yml; do that yourself.</p>
   <aside class="notes">
-    Handout section 3. Start from vetted examples: --ls lists Stellar's soroban-examples (stellar/…) and OpenZeppelin's (oz/…). ~40s.
+    <ul>
+      <li>Don't start from a blank file: --ls lists ready-made examples from Stellar's soroban-examples and from OpenZeppelin.</li>
+      <li>--from copies one into contracts/. Then add it to scaffold.yml yourself.</li>
+      <li>Walk the highlights: the key becomes the client name, type workspace means built from contracts/, source is the crate name, args are constructor arguments by name, networks says where it exists.</li>
+    </ul>
+    <p>About 45s.</p>
   </aside>
 </section>
 
@@ -344,10 +403,12 @@ npm run build                 # → dist/
   </div>
   <p class="small muted">Set <code>STELLAR_NETWORK=testnet</code> in .env. Contracts can differ between networks: make sure the app still typechecks.</p>
   <aside class="notes">
-    Handout section 5. Big change from older Scaffold: by default it no longer deploys to
-    testnet (allow-deploy is off for public networks; you can opt in). Build the Wasm, publish and deploy it with Registry (that's the next
-    talk), then point scaffold.yml's testnet entry at the deployed ID. build --network
-    testnet fetches it and regenerates the clients. ~40s.
+    <ul>
+      <li>By default Scaffold deploys only to your local network. You can opt in to more with allow-deploy, but the recommended path to testnet is Registry.</li>
+      <li>The flow: compile the Wasm, publish and deploy it with the registry (that's the next talk), then point scaffold.yml's testnet entry at the deployed contract.</li>
+      <li>build --network testnet regenerates the clients against testnet, and npm run build gives you a static site to host anywhere.</li>
+    </ul>
+    <p>About 40s.</p>
   </aside>
 </section>
 
@@ -360,7 +421,12 @@ npm run build                 # → dist/
     <li><span class="n">2</span><p>Save is the loop.<span>Every save rebuilds, redeploys locally and regenerates typed clients.</span></p></li>
     <li><span class="n">3</span><p>Ship via Registry.<span>By default Scaffold deploys locally; ship to testnet with the registry, then point scaffold.yml at it.</span></p></li>
   </ol>
-  <aside class="notes">~30s.</aside>
+  <aside class="notes">
+    <ul>
+      <li>Recap the three: start fast with init and npm run dev; every save is the loop; ship to testnet through Registry.</li>
+    </ul>
+    <p>About 30s.</p>
+  </aside>
 </section>
 
 <!-- 9 · 6:25–6:50 -->
@@ -374,7 +440,13 @@ npm run build                 # → dist/
     <li>Teach your agent: Scaffold skill at <strong>skills.stellar.org</strong></li>
   </ul>
   <aside class="notes">
-    Handout sections 7 and 8. Everything is on the sheet. ~25s.
+    <ul>
+      <li>doctor when anything's broken. clean if you changed constructor args and want a fresh start.</li>
+      <li>Works locally but breaks on testnet? Rebuild for testnet and fix the type errors: contracts can differ per network.</li>
+      <li>Browse rgstry.xyz for contracts to depend on, and give your coding agent the Scaffold skill from skills.stellar.org.</li>
+      <li>All of this is on the handout.</li>
+    </ul>
+    <p>About 25s.</p>
   </aside>
 </section>
 
@@ -387,7 +459,11 @@ npm run build                 # → dist/
 stellar registry publish …   # under unverified/
   </code></pre>
   <aside class="notes">
-    Hand off to Registry here. ~10s.
+    <ul>
+      <li>Read the question out loud.</li>
+      <li>Then hand over: that publish command is exactly where the Registry part picks up.</li>
+    </ul>
+    <p>About 10s.</p>
   </aside>
 </section>
 
@@ -408,9 +484,11 @@ stellar registry publish …   # under unverified/
     </div>
   </div>
   <aside class="notes">
-    Answer the last Scaffold slide: your contract works locally with Scaffold, and getting it onto
-    testnet under a name is the registry's job. And once it has a name, other people can find it and
-    you can use other people's contracts the same way. Same headline as the handout. ~45s.
+    <ul>
+      <li>Answer the question: Scaffold runs your contract locally; getting it onto testnet under a name is Registry's job.</li>
+      <li>And once it has a name, anyone can find it. You use other people's contracts by name the same way, with no copied addresses.</li>
+    </ul>
+    <p>About 40s.</p>
   </aside>
 </section>
 
@@ -419,7 +497,13 @@ stellar registry publish …   # under unverified/
   <p class="eyebrow">The big idea</p>
   <div class="quote"><p>Give your contract a name, not an address.
     Ship it to testnet, and let anyone use it by that name.</p></div>
-  <aside class="notes">One sentence to hold onto for the next eight minutes. ~10s.</aside>
+  <aside class="notes">
+    <ul>
+      <li>Read the line out.</li>
+      <li>A name instead of a C… address: the same name works on every network, and nothing gets pasted into your frontend.</li>
+    </ul>
+    <p>About 10s.</p>
+  </aside>
 </section>
 
 <!-- R2 · 7:45–8:45 -->
@@ -443,8 +527,13 @@ stellar registry publish …   # under unverified/
     </div>
   </div>
   <aside class="notes">
-    The three boxes at the top of the Registry handout. Same shape as Scaffold's three
-    things. The unverified/ prefix is the one thing that trips people up. ~1 min.
+    <ul>
+      <li>Wasm: published code, under a name and a version. Only its author can publish new versions.</li>
+      <li>Contract: a deployed instance. The name points to one address, so it has no version.</li>
+      <li>unverified/: the open channel, no approval needed. Use this!</li>
+      <li>Forgetting unverified/ is the most common error, so say it twice.</li>
+    </ul>
+    <p>About 1 min.</p>
   </aside>
 </section>
 
@@ -469,11 +558,15 @@ stellar registry fetch-contract-id unverified/guess-the-number   # C… for scaf
   <p class="small muted">The Wasm is what <code>stellar scaffold build --compile-only</code> wrote with
     <code>STELLAR_NETWORK=testnet</code>. Add <code>--dry-run</code> to preview any write.</p>
   <aside class="notes">
-    These are the two "next talk" lines from Scaffold's ship slide. Fund the testnet
-    account and make it the default. Publish the Wasm Scaffold compiled under a name and
-    version. Deploy a named instance from it; constructor args go after --. Then fetch the
-    C… address: that's what goes in scaffold.yml next. CLI users can also run
-    create-alias and invoke it by name. ~1:45.
+    <ul>
+      <li>Click through the highlights:</li>
+      <li>Fund your testnet account and make it the default.</li>
+      <li>Publish the Wasm Scaffold compiled, under a name and a version.</li>
+      <li>Deploy a named contract from it. Constructor arguments go after the --.</li>
+      <li>fetch-contract-id gives you the C… address you'll put in scaffold.yml.</li>
+      <li>Mention --dry-run to preview any write, and create-alias to call the contract by name from the CLI.</li>
+    </ul>
+    <p>About 1:45.</p>
   </aside>
 </section>
 
@@ -500,10 +593,13 @@ registry          root: bare names, manager-approved
   </div>
   <p class="small muted">Browse them all at rgstry.xyz under Contracts.</p>
   <aside class="notes">
-    The names they've seen so far all start with unverified/. That's a sub-registry: the
-    open one. The root holds bare names like registry and xlm, and needs a manager's
-    approval. oz, circle, soroswap, blend and defindex are sub-registries grouping each
-    project's contracts (all live on testnet.rgstry.xyz/contracts). ~45s.
+    <ul>
+      <li>Every name so far started with unverified/. That's a sub-registry: the open one.</li>
+      <li>The root registry holds bare names, like registry itself, and those need a manager's approval.</li>
+      <li>Other sub-registries group related contracts: oz for OpenZeppelin Wasms, circle/usdc, soroswap's router and factory, blend, defindex.</li>
+      <li>All of them are browsable at rgstry.xyz under Contracts.</li>
+    </ul>
+    <p>About 45s.</p>
   </aside>
 </section>
 
@@ -523,10 +619,13 @@ stellar registry deploy \
     <code>nft-standard</code>, <code>nft-royalties</code>, <code>nft-enumerable</code>, …</p>
   <p class="small muted">Your name, their Wasm: deploy into <code>unverified/</code> from any sub-registry. Want to edit the source instead? <code>stellar scaffold generate contract --from oz/…</code></p>
   <aside class="notes">
-    The oz/ sub-registry holds every curated combination from
-    stellar-registry/oz-combined-wasms, currently built on OZ v0.7.2. Deploy picks the
-    latest version unless you pass --version. Constructor args after --; run
-    deploy … -- --help to see them. ~45s.
+    <ul>
+      <li>Need a token or an NFT? Don't write one.</li>
+      <li>oz/ has more than 30 prebuilt OpenZeppelin combinations on testnet and mainnet: fungible tokens with caps, pausing, allowlists or voting; NFTs with royalties or enumeration; vaults.</li>
+      <li>Deploy one under your own unverified/ name. Constructor args go after --, and deploy … -- --help lists them.</li>
+      <li>Want to change the source? Use Scaffold's generate --from oz/… instead.</li>
+    </ul>
+    <p>About 45s.</p>
   </aside>
 </section>
 
@@ -563,10 +662,14 @@ contracts:
   <p class="small">Then <code>stellar scaffold build --network testnet</code> regenerates the typed
     <code>guessTheNumber</code> client against testnet. Same for anyone else's contract.</p>
   <aside class="notes">
-    The same per-network entry as Scaffold's ship slide, filled in. local still builds
-    from contracts/; testnet points at the deployed contract. Today you paste the C…
-    address from fetch-contract-id. Coming soon: the registry name goes straight into
-    scaffold.yml (cli#617). If #617 ships before the event, drop the left column. ~1:30.
+    <ul>
+      <li>This is the entry from Scaffold's ship slide, filled in.</li>
+      <li>local still builds from contracts/. testnet points at the deployed contract, by the C… address from fetch-contract-id.</li>
+      <li>Coming soon: put the registry name straight into scaffold.yml.</li>
+      <li>The same pattern works for anyone else's contract.</li>
+    </ul>
+    <p>About 1:30.</p>
+    <p><em>Prep: If stellar-scaffold/cli#617 (type: registry) ships before the event, drop the Today column.</em></p>
   </aside>
 </section>
 
@@ -583,8 +686,12 @@ contracts:
     <img src="assets/explorer-testnet-contracts.png" alt="Named contracts on testnet.rgstry.xyz" width="820">
   </div>
   <aside class="notes">
-    Recap of "Ship to testnet by name" and "Point scaffold.yml at it" as one story. The screenshot is testnet.rgstry.xyz/contracts: every
-    named contract on testnet, including other teams' you can depend on. ~45s.
+    <ul>
+      <li>Pull it together with guess-the-number:</li>
+      <li>It worked locally with Scaffold. We published and deployed it under unverified/. Now testnet has a named contract, scaffold.yml points at it, and the app has a typed client.</li>
+      <li>The screenshot is testnet.rgstry.xyz: every named contract on testnet, including other teams' that you can build on.</li>
+    </ul>
+    <p>About 45s.</p>
   </aside>
 </section>
 
@@ -604,12 +711,14 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
   </code></pre>
   <p class="small muted">Defaults to <code>local</code>, and switching networks rebuilds automatically. Assets like <code>xlm</code> resolve at runtime, so one Wasm works on any network. Contract names resolve at build time: after a redeploy, <code>cargo clean</code> and rebuild.</p>
   <aside class="notes">
-    The template contract already uses the registry for XLM (contracts/guess-the-number/src/xlm.rs).
-    import_contract! turns a name into a client bound to its address, built from the
-    on-chain Wasm. As of stellar-registry 0.1.2 (cli#97), asset imports derive their address at
-    runtime and a network change re-expands the macros; named contracts still resolve at
-    build time. Set STELLAR_NETWORK=testnet in .env, as on Scaffold's ship slide. Short on time:
-    show only the import_contract! line. ~1:15.
+    <ul>
+      <li>You've already used the registry: the template's guess-the-number imports XLM with import_asset!.</li>
+      <li>import_contract! turns any registered name into a typed client, with no address in your source.</li>
+      <li>Build with STELLAR_NETWORK set; Scaffold's .env does that for you.</li>
+      <li>Asset imports like xlm resolve at runtime, so one Wasm works on any network. Named contracts resolve at build time, so after a redeploy, cargo clean and rebuild.</li>
+    </ul>
+    <p>About 1:15.</p>
+    <p><em>Prep: Short on time: show only the import_contract! line.</em></p>
   </aside>
 </section>
 
@@ -622,7 +731,12 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
     <li><span class="n">2</span><p>Ship it.<span>Publish and deploy with the registry: that's how you reach testnet.</span></p></li>
     <li><span class="n">3</span><p>Use it.<span>Point scaffold.yml or <code>import_contract!</code> at a name, never a copied address.</span></p></li>
   </ol>
-  <aside class="notes">~30s.</aside>
+  <aside class="notes">
+    <ul>
+      <li>Recap the three: name it under unverified/, ship it to testnet with the registry, use contracts by name instead of copied addresses.</li>
+    </ul>
+    <p>About 30s.</p>
+  </aside>
 </section>
 
 <!-- R7 · 13:45–14:30 -->
@@ -636,7 +750,14 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
     <li>Teach your agent: Registry skill at <strong>skills.stellar.org</strong></li>
   </ul>
   <aside class="notes">
-    The "Common errors" box on the back of the Registry handout. ~45s.
+    <ul>
+      <li>The errors people will actually hit:</li>
+      <li>Auth failure on publish: you used a bare name, so add unverified/.</li>
+      <li>Error #5: that contract name is taken. Error #8: publish a higher --binver.</li>
+      <li>Macro can't find a contract: STELLAR_NETWORK wasn't set when you built.</li>
+      <li>deploy … -- --help prints a contract's constructor arguments, and skills.stellar.org has the Registry skill for your coding agent.</li>
+    </ul>
+    <p>About 45s.</p>
   </aside>
 </section>
 
@@ -663,8 +784,11 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
     </div>
   </div>
   <aside class="notes">
-    One action to take during the hackathon, plus where to go next. The QR opens this deck at
-    theahaco.github.io/talks/hackmeridian-2026/scaffold-registry/. ~30s.
+    <ul>
+      <li>One thing to do during the hackathon: publish your contract under unverified/, and give the next team something to build on.</li>
+      <li>Point at the three links, and at the QR code: it opens these slides.</li>
+    </ul>
+    <p>About 30s.</p>
   </aside>
 </section>
 
@@ -682,7 +806,13 @@ STELLAR_NETWORK=testnet stellar scaffold build   # names resolve at build time
       <div class="qr"><img src="assets/qr-deck.svg" alt="QR code for these slides"><p>These slides</p></div>
     </div>
   </div>
-  <aside class="notes">Take questions. Drop Willem's name if the Nido talk isn't in this set.</aside>
+  <aside class="notes">
+    <ul>
+      <li>Thank everyone.</li>
+      <li>Point at the QR code for the slides, and take questions.</li>
+    </ul>
+    <p><em>Prep: Drop Willem's name if the Nido talk isn't in this set.</em></p>
+  </aside>
 </section>
 
 </div></div>
