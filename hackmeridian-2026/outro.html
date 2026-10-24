@@ -59,6 +59,15 @@
       <li>Thank everyone.</li>
       <li>Point at the QR code for the slides, and take questions.</li>
     </ul>
+    <p><em>Likely Nido questions:</em></p>
+    <ul>
+      <li>Mainnet? Hosted Nido is testnet-only today.</li>
+      <li>Who pays fees? Nido's relayer pays for account creation and grants. The app's session key pays each call's fee; on testnet Friendbot funds it, on mainnet the app would have to.</li>
+      <li>Where does the session key live? In the browser's localStorage for the app's origin. It never holds the user's funds; whoever reads it can spend at most the cap until the grants expire.</li>
+      <li>Revoking? Not in Nido yet; grants end at their expiry.</li>
+      <li>Why only one confirmation for two grants? One approval installs the session key plus all its rules, both grants, at once.</li>
+    </ul>
+    <p><em>Nido sources: github.com/nidohq/scaffold-template (NIDO.md, README.md), github.com/nidohq/scaffold-template/pull/10 (UX walkthrough), stellarscaffold.org/docs/community-templates</em></p>
   </aside>
 </section>
 

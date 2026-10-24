@@ -19,13 +19,13 @@
     <div class="text">
       <p class="eyebrow">Nido</p>
       <h2>Passkey accounts for your app</h2>
-      <p>Nido with Scaffold Stellar: what Nido does, how to Nido, then questions.</p>
+      <p>Nido with Scaffold Stellar: what Nido does, then how to Nido.</p>
     </div>
   </div>
   <aside class="notes">
     <ul>
       <li>I'm going to show you Nido: passkey accounts for your Stellar app.</li>
-      <li>First what it does for your users and your app, then how to add it with the Scaffold Stellar template, then your questions.</li>
+      <li>First what it does for your users and your app, then how to add it with the Scaffold Stellar template. Questions at the end, together.</li>
     </ul>
     <p>About 30s.</p>
     <p><em>Sources: github.com/nidohq/scaffold-template (NIDO.md, README.md), github.com/nidohq/scaffold-template/pull/10 (UX walkthrough), stellarscaffold.org/docs/community-templates</em></p>
@@ -462,11 +462,11 @@ npm run clients:testnet && npm run dev
   </aside>
 </section>
 
-<!-- N15 · 10:00–15:00 -->
+<!-- N15 · resources -->
 <section>
-  <p class="eyebrow">Part 3</p>
-  <h2>Questions?</h2>
-  <div class="split">
+  <p class="eyebrow">Keep building</p>
+  <h2>Nido resources</h2>
+  <div class="split resources">
     <ul>
       <li><strong>The template</strong>: github.com/nidohq/scaffold-template</li>
       <li><strong>The guide</strong>: NIDO.md, in the template</li>
@@ -480,18 +480,11 @@ npm run clients:testnet && npm run dev
   </div>
   <aside class="notes">
     <ul>
-      <li>Links are on screen: the template, the guide, the Guess the Number sample app with a live version you can try, Nido itself, and for anyone who wants to go deeper, Perch, the policy language Nido accounts enforce, and OpenZeppelin's stellar contracts underneath it.</li>
+      <li>Everything you need to add Nido: the template, the guide in it, the Guess the Number sample app, and a live version you can try right now.</li>
+      <li>For anyone who wants to go deeper: Nido itself, Perch, the policy language Nido accounts enforce, and OpenZeppelin's stellar contracts underneath it.</li>
+      <li>We'll take questions together at the end.</li>
     </ul>
-    <p>About 5 min, with questions.</p>
-    <p><em>Likely questions:</em></p>
-    <ul>
-      <li>Mainnet? Hosted Nido is testnet-only today.</li>
-      <li>Who pays fees? Nido's relayer pays for account creation and grants. The app's session key pays each call's fee; on testnet Friendbot funds it, on mainnet the app would have to.</li>
-      <li>Where does the session key live? In the browser's localStorage for the app's origin. It never holds the user's funds; whoever reads it can spend at most the cap until the grants expire.</li>
-      <li>Revoking? Not in Nido yet; grants end at their expiry.</li>
-      <li>Why only one confirmation for two grants? One approval installs the session key plus all its rules, both grants, at once.</li>
-    </ul>
-    <p><em>Sources: github.com/nidohq/scaffold-template (NIDO.md, README.md), github.com/nidohq/scaffold-template/pull/10 (UX walkthrough), stellarscaffold.org/docs/community-templates</em></p>
+    <p>About 30s.</p>
   </aside>
 </section>
 

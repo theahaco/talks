@@ -167,6 +167,9 @@ body, .reveal-viewport { background: #fff; }
 .reveal .controls { color: var(--navy); }
 .reveal .progress { color: var(--green); }
 
+/* Resource lists: big enough to read from the room */
+.reveal .resources li { font-size: 38px; margin: 20px 0; line-height: 1.3; }
+
 /* Speakers slide */
 .speakers h3 { font-size: 40px; font-weight: 700; margin-bottom: 4px; }
 .speakers .lead { font-size: 28px; color: var(--grey); }
