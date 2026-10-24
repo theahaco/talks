@@ -109,6 +109,34 @@
   </aside>
 </section>
 
+<!-- N3a · recovery -->
+<section>
+  <p class="eyebrow">Never locked out</p>
+  <h2>Recovery</h2>
+  <div class="with-shot">
+    <img src="assets/nido-recovery.png" alt="Nido's recovery setup: what to protect against, who can help you back in, how many must approve, and timing" width="440">
+    <div>
+      <p>Recovery starts off: lose the passkey, and nobody can help you back in. Turn it on and choose:</p>
+      <table class="compare">
+        <tr><th>Protect against</th><td>A lost passkey, or a stolen one</td></tr>
+        <tr><th>Who helps</th><td>Trusted friends approve, your recovery kit proves it is you, or both together</td></tr>
+        <tr><th>How many</th><td>How many friends must approve</td></tr>
+        <tr><th>Timing</th><td>Standard: wait 7 days, then 14 days to finish</td></tr>
+      </table>
+      <p class="small muted">Friends are other Nidos or Stellar addresses. One option restores this exact setup if the passkey is stolen.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <ul>
+      <li>And if the user loses that passkey? Recovery starts off: if you lose this passkey, nobody can help you back in.</li>
+      <li>Turning it on, you choose what it protects against, a lost passkey or a stolen one, and who can help you back in: trusted friends, your recovery kit, or both together.</li>
+      <li>Friends are other Nidos or Stellar addresses, and you set how many must approve.</li>
+      <li>And there's a delay: by default, wait seven days, then fourteen days to finish.</li>
+    </ul>
+    <p>About 40s.</p>
+  </aside>
+</section>
+
 <!-- N4 · 2:20–3:10 -->
 <section>
   <p class="eyebrow">The old way vs with Nido</p>
@@ -384,7 +412,121 @@ npm run clients:testnet && npm run dev
   </aside>
 </section>
 
-<!-- N12 · 10:05–15:00 -->
+<!-- N12 · the account's policies, human-readable -->
+<section>
+  <p class="eyebrow">After approval · what your account enforces</p>
+  <h2>Your policies, in plain words</h2>
+  <div class="split wide-left">
+    <div>
+      <div class="label">Home: every policy change is in Recent activity</div>
+      <img class="shot" src="assets/nido-home.png" alt="Nido's home screen; Recent activity shows Updated policies, 2 rules added" width="900">
+    </div>
+    <div>
+      <div class="label">Account policy: the document, verified</div>
+      <img class="shot" src="assets/nido-policy-document.png" alt="Nido's Account policy page: 3 rules installed, policy document verified against the on-chain hash, two signers and one admin key" width="560">
+    </div>
+  </div>
+  <aside class="notes">
+    <ul>
+      <li>Once the user approves, the grants are rules on their account, and Nido shows them.</li>
+      <li>Home: Recent activity has "Updated policies, 2 rules added", next to the two 1 XLM payments to the game.</li>
+      <li>The Account policy page lists every rule that decides who may do what on the account: 3 rules installed, and the policy document is verified against the hash the account stores on chain.</li>
+      <li>It names the two signers: "admin", the user's passkey, and "session", the app's key. Only admin has full authority.</li>
+    </ul>
+    <p>About 45s.</p>
+  </aside>
+</section>
+
+<!-- N13 · one rule, human-readable and raw -->
+<section>
+  <p class="eyebrow">Same rule, two views</p>
+  <h2>guess-xlm, read and raw</h2>
+  <div class="with-shot">
+    <img src="assets/nido-policy-rules.png" alt="Nido's rule cards for guess and guess-xlm: session can call transfer on the XLM contract, up to 2 XLM per day" width="600">
+    <div>
+      <div class="label">The rule in the Perch policy document</div>
+      <pre class="tight"><code class="language-json" data-trim data-line-numbers="1-10|2-3|4|7|9">
+{
+  "args": [{ "index": 1, "pred": {
+    "address": "CBY4S4…ECYGUW", "type": "address-eq" } }],
+  "cap": { "limit": "20000000", "period-ledgers": 17280 },
+  "functions": ["transfer"],
+  "name": "guess-xlm",
+  "not-after-ledger": 5382692,
+  "principals": { "signers": ["session"], "type": "all" },
+  "scope": { "address": "CDLZFC…HGCYSC", "type": "contract" }
+}
+      </code></pre>
+      <table class="compare">
+        <tr><td><code>"limit": "20000000"</code></td><td>2 XLM: amounts are in stroops, 10,000,000 to the XLM</td></tr>
+        <tr><td><code>"period-ledgers": 17280</code></td><td>Per day: about 5 seconds a ledger</td></tr>
+        <tr><td><code>"not-after-ledger"</code></td><td>Stops at ledger 5382692</td></tr>
+        <tr><td><code>"args"</code>, <code>"address-eq"</code></td><td>Argument conditions: pays only the game</td></tr>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    <ul>
+      <li>Here's one rule both ways. On the left, Nido's card for guess-xlm: "session" can call transfer on the XLM contract, up to 2 XLM per day, until ledger 5382692.</li>
+      <li>On the right, the same rule in the raw Perch policy document. Click through:</li>
+      <li>args: the first argument after the sender must be the game's address, which is the "Argument conditions" tag. It can only pay the game.</li>
+      <li>cap: limit 20000000 is in stroops, ten million to an XLM, so 2 XLM. period-ledgers 17280 at about five seconds a ledger is one day.</li>
+      <li>not-after-ledger is the expiry, the "Stops at ledger" tag. scope is the XLM contract itself.</li>
+    </ul>
+    <p>About 1 min.</p>
+  </aside>
+</section>
+
+<!-- N14 · the whole raw policy document -->
+<section>
+  <p class="eyebrow">Raw document JSON</p>
+  <h2>The raw Perch policy document</h2>
+  <div class="split wide-left">
+    <pre class="tight"><code class="language-json" data-trim>
+{
+  "network": "Test SDF Network ; September 2015",
+  "rules": [
+    { "name": "admin",
+      "principals": { "signers": ["admin"], "type": "all" },
+      "scope": { "type": "self-admin" } },
+    { "functions": ["guess"], "name": "guess",
+      "not-after-ledger": 5382692,
+      "principals": { "signers": ["session"], "type": "all" },
+      "scope": { "address": "CBY4S4…ECYGUW",
+                 "type": "contract" } },
+    { "args": [ … ], "cap": { … },
+      "functions": ["transfer"], "name": "guess-xlm", … }
+  ],
+    </code></pre>
+    <div>
+      <pre class="tight"><code class="language-json" data-trim>
+  "signers": [
+    { "id": "admin",
+      "key": "047f6eb2…d1acb22e",
+      "verifier": "CDEV5Y…K4EJT" },
+    { "id": "session",
+      "key": "04caa6ec…aa25495d",
+      "verifier": "CDEV5Y…K4EJT" }
+  ],
+  "version": 1
+}
+      </code></pre>
+      <p class="small">This is the document itself, names and all. The account stores its hash on chain, and Nido checks the document byte for byte against it.</p>
+    </div>
+  </div>
+  <p class="small muted">guess-xlm in full is on the previous slide. Long keys and addresses are shortened with an ellipsis.</p>
+  <aside class="notes">
+    <ul>
+      <li>And this is the whole document, what Nido's "Raw document JSON" shows: Perch, the policy language Nido accounts enforce.</li>
+      <li>Three rules: admin, with full authority over the account itself; guess; and guess-xlm, from the last slide.</li>
+      <li>Two signers, admin and session, each a P-256 key checked by the same verifier contract.</li>
+      <li>The account stores the document's hash on chain, so what you read here is exactly what it enforces.</li>
+    </ul>
+    <p>About 45s.</p>
+  </aside>
+</section>
+
+<!-- N15 · 10:05–15:00 -->
 <section>
   <p class="eyebrow">Part 3 · 5 min</p>
   <h2>Questions?</h2>
