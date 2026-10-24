@@ -323,7 +323,7 @@ contracts:
 <!-- 8 · 5:45–6:25 -->
 <section>
   <h2><span class="num">5</span>Go to testnet and ship</h2>
-  <p class="small">Scaffold only deploys locally. Testnet contracts go through <strong>Stellar Registry</strong>; scaffold.yml just points at them.</p>
+  <p class="small">By default Scaffold deploys only to your local network. To ship to testnet, publish and deploy with <strong>Stellar Registry</strong>, then point scaffold.yml at the deployed contract.</p>
   <div class="split">
     <pre class="tight"><code class="language-yaml" data-trim data-line-numbers="1-7|5-7">
 contracts:
@@ -344,8 +344,8 @@ npm run build                 # → dist/
   </div>
   <p class="small muted">Set <code>STELLAR_NETWORK=testnet</code> in .env. Contracts can differ between networks: make sure the app still typechecks.</p>
   <aside class="notes">
-    Handout section 5. Big change from older Scaffold: no allow-deploy, no testnet deploys
-    from Scaffold. Build the Wasm, publish and deploy it with Registry (that's the next
+    Handout section 5. Big change from older Scaffold: by default it no longer deploys to
+    testnet (allow-deploy is off for public networks; you can opt in). Build the Wasm, publish and deploy it with Registry (that's the next
     talk), then point scaffold.yml's testnet entry at the deployed ID. build --network
     testnet fetches it and regenerates the clients. ~40s.
   </aside>
@@ -358,7 +358,7 @@ npm run build                 # → dist/
   <ol class="takeaways">
     <li><span class="n">1</span><p>Start fast.<span><code>init</code> and <code>npm run dev</code> give you contracts, a frontend and a local network.</span></p></li>
     <li><span class="n">2</span><p>Save is the loop.<span>Every save rebuilds, redeploys locally and regenerates typed clients.</span></p></li>
-    <li><span class="n">3</span><p>Ship via Registry.<span>Testnet contracts go through the registry; scaffold.yml just points at them.</span></p></li>
+    <li><span class="n">3</span><p>Ship via Registry.<span>By default Scaffold deploys locally; ship to testnet with the registry, then point scaffold.yml at it.</span></p></li>
   </ol>
   <aside class="notes">~30s.</aside>
 </section>
@@ -408,8 +408,8 @@ stellar registry publish …   # under unverified/
     </div>
   </div>
   <aside class="notes">
-    Answer the last Scaffold slide: your contract works locally, Scaffold won't deploy it
-    to testnet, the registry does. And once it has a name, other people can find it and
+    Answer the last Scaffold slide: your contract works locally, Scaffold doesn't deploy it
+    to testnet by default, the registry does. And once it has a name, other people can find it and
     you can use theirs the same way. Same headline as the handout. ~45s.
   </aside>
 </section>
@@ -523,7 +523,7 @@ contracts:
   <h2>guess-the-number, local to testnet</h2>
   <div class="split wide-left">
     <ul class="small">
-      <li><strong>01. Context:</strong> it works locally with Scaffold, but Scaffold won't deploy to testnet.</li>
+      <li><strong>01. Context:</strong> it works locally with Scaffold, but by default Scaffold doesn't deploy to testnet.</li>
       <li><strong>02. Decision:</strong> publish the Wasm and deploy it as <code>unverified/guess-the-number</code>.</li>
       <li><strong>03. Result:</strong> testnet has a named contract, scaffold.yml points at it, and the app gets a typed client.</li>
     </ul>

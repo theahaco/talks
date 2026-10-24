@@ -25,8 +25,8 @@
     </div>
   </div>
   <aside class="notes">
-    Answer the last Scaffold slide: your contract works locally, Scaffold won't deploy it
-    to testnet, the registry does. And once it has a name, other people can find it and
+    Answer the last Scaffold slide: your contract works locally, Scaffold doesn't deploy it
+    to testnet by default, the registry does. And once it has a name, other people can find it and
     you can use theirs the same way. Same headline as the handout. ~45s.
   </aside>
 </section>
@@ -140,7 +140,7 @@ contracts:
   <h2>guess-the-number, local to testnet</h2>
   <div class="split wide-left">
     <ul class="small">
-      <li><strong>01. Context:</strong> it works locally with Scaffold, but Scaffold won't deploy to testnet.</li>
+      <li><strong>01. Context:</strong> it works locally with Scaffold, but by default Scaffold doesn't deploy to testnet.</li>
       <li><strong>02. Decision:</strong> publish the Wasm and deploy it as <code>unverified/guess-the-number</code>.</li>
       <li><strong>03. Result:</strong> testnet has a named contract, scaffold.yml points at it, and the app gets a typed client.</li>
     </ul>
