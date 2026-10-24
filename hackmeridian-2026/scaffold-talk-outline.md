@@ -1,7 +1,7 @@
 # Stellar Scaffold: hackathon talk plan
 
 **Slot:** ~7 minutes of a 15-minute joint session (Scaffold ~7, Registry ~8).
-**Audience:** hackathon developers who want to ship something this weekend.
+**Audience:** hackathon developers who want to ship something at HackMeridian.
 **Order:** Scaffold first, Registry second. Scaffold is "build your app", Registry is "share and reuse contracts by name", which is where the handout already points (step 5).
 **One takeaway:** one command gets you contracts, a frontend, a local network and typed clients that rebuild every time you save.
 
