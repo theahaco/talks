@@ -172,9 +172,10 @@ body, .reveal-viewport { background: #fff; }
 .reveal .progress { color: var(--green); }
 
 /* Resource cards: a label and its link, readable from the room */
-.resource-cards { row-gap: 40px; margin-top: 16px; }
-.resource-cards .card h3 { font: 700 34px/1.2 var(--sans); color: var(--navy); margin-bottom: 14px; }
-.resource-cards .card p { font: 22px/1.5 var(--mono); color: var(--slate); margin: 0; }
+.resource-cards { grid-template-columns: repeat(2, 1fr); gap: 24px 48px; margin-top: 8px; }
+.resource-cards .card { padding: 22px 32px; }
+.resource-cards .card h3 { font: 700 44px/1.15 var(--sans); color: var(--navy); margin-bottom: 8px; }
+.resource-cards .card p { font: 30px/1.4 var(--mono); color: var(--slate); margin: 0; }
 
 /* Speakers slide */
 .speakers h3 { font-size: 40px; font-weight: 700; margin-bottom: 4px; }
