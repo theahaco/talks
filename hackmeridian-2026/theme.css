@@ -94,6 +94,7 @@ body, .reveal-viewport { background: #fff; }
 /* Except where reading the screenshot matters more than the bottom edge */
 .reveal .slides section:not(.navy) img.big-shot:not([src$=".svg"]) { width: 580px; max-height: none; }
 .reveal .slides section:not(.navy) img.fill-shot:not([src$=".svg"]) { width: 100%; max-height: none; }
+.reveal .slides section:not(.navy) img.match-code:not([src$=".svg"]) { max-height: 546px; }
 
 /* Status pills */
 .reveal .tag {
