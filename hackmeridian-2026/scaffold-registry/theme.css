@@ -162,3 +162,7 @@ body, .reveal-viewport { background: #fff; }
 .slide-footer .page { margin-left: auto; }
 .reveal .controls { color: var(--navy); }
 .reveal .progress { color: var(--green); }
+
+/* Speakers slide */
+.speakers h3 { font-size: 40px; font-weight: 700; margin-bottom: 4px; }
+.speakers .lead { font-size: 28px; color: var(--grey); }
