@@ -1,4 +1,4 @@
-# HackMeridian 2026: Stellar Scaffold + Stellar Registry
+# HackMeridian 2026: Scaffold. Register. Nido.
 
 reveal.js 5.1.0, vendored in `vendor/` so it works with no internet.
 
