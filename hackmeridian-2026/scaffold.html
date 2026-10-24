@@ -223,20 +223,26 @@ pub fn hint(env: &Env, a_number: u64) -> Symbol {
   <p class="eyebrow">The loop · 2 of 3</p>
   <h2>Save: <code>npm run dev</code> does the rest</h2>
   <pre class="tight"><code class="language-plaintext" data-trim>
-[stellar] Watching for changes. Press Ctrl+C to stop.
 [stellar] File changed: contracts/guess-the-number/src/lib.rs
-[stellar] Changes detected. Rebuilding...
-[stellar] Building for network "local" (from `stellar network use`)
-[stellar] Starting local network
-          …build, redeploy to the local network…
+[stellar] ℹ️  Changes detected. Rebuilding...
+[stellar] ℹ️  Building for network "local" (from `stellar network use`)
+[stellar] ✅ Local Stellar network is healthy and running.
+[stellar]    Compiling guess-the-number v0.0.2 (contracts/guess-the-number)
+[stellar] ✅ Build Complete
+[stellar] 🌎 Sending transaction...
+[stellar] ✅ Transaction submitted successfully!
+[stellar] ✅ Client "guess-the-number" updated successfully
 [stellar] ✅ Successfully generated client for: guess-the-number
+[stellar] ✅ Contract "nft-enumerable" is up to date
+[stellar] ℹ️  Watching for changes. Press Ctrl+C to stop.
   </code></pre>
-  <p class="small">One save: the Wasm rebuilds, the contract redeploys locally, and the TypeScript client in <code>app-lib/clients</code> is regenerated with <code>hint</code> in it.</p>
+  <p class="small">One save: the Wasm rebuilds, the changed contract is updated on the local network, and its TypeScript client is regenerated with <code>hint</code> in it. Contracts you didn't touch stay as they are.</p>
   <aside class="notes">
     <ul>
       <li>Step two: save the file.</li>
       <li>npm run dev notices, rebuilds the Wasm, redeploys to the local network and regenerates the TypeScript client.</li>
-      <li>The very first run also pulls the Stellar quickstart Docker image, so give it a minute once.</li>
+      <li>Point out the last lines: only the contract you changed is updated; the others are &quot;up to date&quot;.</li>
+      <li>This is real output, trimmed: the full log also lists every exported function and each transaction. The very first run also pulls the Stellar quickstart Docker image, so give it a minute once.</li>
     </ul>
     <p>About 30s.</p>
   </aside>
